@@ -1053,6 +1053,8 @@ footer{background:var(--ink);color:#aaa;padding:64px 0 26px;margin-top:0;border-
       cursor:pointer;
       transition:background .15s ease, border-color .15s ease, color .15s ease;
       white-space:nowrap;
+            touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
 
@@ -4017,6 +4019,8 @@ html, body {
         cursor:pointer;
         transition:background .15s ease, border-color .15s ease, color .15s ease;
         white-space:nowrap;
+                touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
       #builder .btn:hover{
         background:#262626;
