@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gang Sheet Builder | Craftopia Customs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<link rel="icon" href="./pic/favicon-logo.png" type="image/png" sizes="512x512">
+<link rel="icon" type="image/png" sizes="32x32" href="./pic/favicon-logo.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./pic/favicon-logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./pic/favicon-logo.png">
+<link rel="icon" sizes="192x192" href="./pic/favicon-logo.png">
+<link rel="icon" sizes="512x512" href="./pic/favicon-logo.png">
+<meta name="theme-color" content="#B6E511">
+<meta name="msapplication-TileColor" content="#B6E511">
+</head>
+<body>
+
+<div class="announce">
+  <div class="announce-track">
+    <span class="announce-item">FREE LOCAL PICKUP IN EDMONTON</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">NO MINIMUM ON GANG SHEETS</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">BULK DISCOUNTS FOR TEAMS & BUSINESSES</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">FREE LOCAL PICKUP IN EDMONTON</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">NO MINIMUM ON GANG SHEETS</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">BULK DISCOUNTS FOR TEAMS & BUSINESSES</span>
+    <span class="announce-sep">|</span>
+  </div>
+</div>
+
+<header>
+  <div class="nav">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <a href="index.html" class="logo">
+      <img src="pic/pic.png" alt="Craftopia Customs" class="logo-img" onerror="this.style.display='none'">
+    </a>
+
+   <nav class="nav-links" id="navLinks">
+  <button class="nav-sidebar-close" id="navSidebarClose" aria-label="Close menu">&times;</button>
+
+  <div class="sidebar-logo">
+    <img src="pic/pic.png" alt="Craftopia Customs" onerror="this.style.display='none'">
+  </div>
+
+  <div class="sidebar-search">
+    <div class="sidebar-search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="sidebarSearchInput" placeholder="Search products..." autocomplete="off">
+    </div>
+    <div class="sidebar-search-results" id="sidebarSearchResults"></div>
+  </div>
+
+  <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+  <a href="store.html"><i class="fa-solid fa-bag-shopping"></i>Products</a>
+  <a href="#about"><i class="fa-solid fa-user-group"></i>About Us</a>
+  <a href="gangsheet.html"><i class="fa-solid fa-pen-ruler"></i>Customize Now</a>
+  <a href="#services"><i class="fa-solid fa-shirt"></i>Services</a>
+
+  <div class="sidebar-shop-info">
+
+    <h6>Contact Us</h6>
+
+    <div class="shop-contact-list">
+
+      <!-- Address -->
+      <div class="shop-contact-item">
+        <div class="contact-icon address-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="contact-text">
+          <span>Visit Our Shop</span>
+          <p>14827 123 Ave NW<br>Edmonton, Alberta</p>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <a href="tel:+15877780189" class="shop-contact-item contact-link">
+        <div class="contact-icon phone-icon">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div class="contact-text">
+          <span>Call Us</span>
+          <p>587-778-0189</p>
+        </div>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:craftopiacustoms5@gmail.com" class="shop-contact-item contact-link">
+        <div class="contact-icon email-icon">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="contact-text">
+          <span>Email Us</span>
+          <p>craftopiacustoms5@gmail.com</p>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Instagram -->
+    <a
+      href="https://www.instagram.com/craftopia.customs/"
+      target="_blank"
+      rel="noopener"
+      class="instagram-contact-btn"
+    >
+      <span class="instagram-logo">
+        <i class="fa-brands fa-instagram"></i>
+      </span>
+
+      <span class="instagram-btn-text">
+        <small>Follow us on Instagram</small>
+        <strong>@craftopia.customs</strong>
+      </span>
+
+      <i class="fa-solid fa-arrow-up-right-from-square instagram-arrow"></i>
+    </a>
+
+  </div>
+  
+    <div class="sidebar-legal">
+  <div class="sidebar-legal-links">
+    <a href="/terms">Terms &amp; Conditions</a>
+    <span class="legal-dot">•</span>
+    <a href="/privacy">Privacy Policy</a>
+    <span class="legal-dot">•</span>
+    <a href="/refund-policy">Refund Policy</a>
+  </div>
+  <small class="sidebar-legal-copy">© 2026 Your Shop. All rights reserved.</small>
+</div>
+</nav>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+
+ <div class="nav-icons">
+  
+<div class="user-menu" id="userMenu">
+
+    <a href="form.html" class="icon-btn user-toggle" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </svg>
+    </a>
+
+    <div class="user-dropdown">
+        <a href="form.html" class="user-drop-link">Sign In</a>
+        <a href="form.html" class="user-drop-link">Sign Up</a>
+    </div>
+
+</div>
+
+  <a href="#cart" class="cart-link" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2.5 3h2l2.7 12.6a2 2 0 002 1.6h8.9a2 2 0 002-1.6L21 8H6"/></svg>
+        <span class="cart-count">0</span>
+      </a>
+      <a href="#builder" class="btn btn-lime btn-sm quote-btn">Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- GANG SHEET BUILDER -->
+  <section class="builder-section" id="builder">
+    <div class="wrap">
+      <div class="builder-head">
+        <span class="eyebrow">Gang Sheet Builder</span>
+        <h2>Build Your Own DTF Gang Sheet</h2>
+        <p>Upload as many designs as you want, arrange them on a fixed 24" wide sheet of unlimited length, and we'll print and cut them ready for pressing.</p>
+      </div>
+
+      <div class="builder-app">
+        <!-- LEFT PANEL -->
+        <div class="panel panel-left">
+          <h5>Upload Designs</h5>
+          <label class="upload-drop" id="dropZone">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF3D9E" stroke-width="1.8"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+            <p>Click or drop images</p>
+            <span>PNG, JPG — any resolution</span>
+          </label>
+          <input type="file" id="fileInput" accept="image/*" multiple>
+
+          <h5>Live Preview</h5>
+          <canvas id="miniPreview" width="200" height="60" class="mini-preview-canvas"></canvas>
+
+          <h5>Layers <span id="layerCount" style="color:#FF3D9E"></span></h5>
+          <div class="layer-list" id="layerList">
+            <div class="empty-hint">No images yet — upload to get started.</div>
+          </div>
+
+          <button class="btn btn-outline btn-block" id="autoArrangeBtn">Auto-Arrange Sheet</button>
+
+          <div class="mini-actions">
+            <button class="btn btn-outline btn-sm" id="undoBtn">Undo</button>
+            <button class="btn btn-outline btn-sm" id="redoBtn">Redo</button>
+          </div>
+
+          <div class="mini-actions">
+            <button class="btn btn-outline btn-sm" id="rotateLeftBtn">↺ Rotate</button>
+            <button class="btn btn-outline btn-sm" id="rotateRightBtn">↻ Rotate</button>
+          </div>
+
+          <div class="mini-actions">
+            <button class="btn btn-outline btn-sm" id="flipHBtn">Flip H</button>
+            <button class="btn btn-outline btn-sm" id="flipVBtn">Flip V</button>
+          </div>
+
+          <button class="btn btn-outline btn-block" id="trimBtn">Trim Transparent Space</button>
+          <button class="btn btn-outline btn-block" id="resetBgBtn">Reset Background</button>
+
+  <div id="bgToleranceRow" class="tolerance-row">
+  <label>Background Tolerance: <span id="bgToleranceVal">30%</span></label>
+  <input type="range" id="bgTolerance" min="0" max="150" value="30">
+</div>
+          <div id="bgStatus" class="bg-status"></div>
+          <div id="lowResWarning"></div>
+        </div>
+
+        <!-- CENTER -->
+        <div class="panel stage-wrap">
+          <div class="stage-toolbar">
+            <span id="stageHint">Sheet width fixed at 24". Length grows as you add designs.</span>
+            <div class="zoom-controls">
+              <button class="zbtn" id="zoomOut">−</button>
+              <span id="zoomLabel">100%</span>
+              <button class="zbtn" id="zoomIn">+</button>
+            </div>
+          </div>
+          <div class="sheet-outer">
+            <div class="ruler-top" id="rulerTop"></div>
+            <div class="sheet" id="sheet"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="panel panel-right">
+          <h5>Selected Design</h5>
+          <div id="noSelection" class="empty-hint">Click a design on the sheet to edit its size or remove its background.</div>
+          <div id="selPanel" style="display:none">
+            <div class="field-row">
+              <div class="field"><label>Width (in)</label><input type="number" id="selW" min="0.5" step="0.1"></div>
+              <div class="field"><label>Height (in)</label><input type="number" id="selH" min="0.5" step="0.1"></div>
+            </div>
+        
+            <div class="toggle-row">Remove background
+              <div class="switch" id="bgToggle"></div>
+            </div>
+
+            <div class="toggle-row">Quantity
+              <div class="qty-stepper">
+                <button class="qty-btn" id="qtyMinus">−</button>
+                <input type="number" id="qtyInput" min="1" value="1">
+                <button class="qty-btn" id="qtyPlus">+</button>
+              </div>
+            </div>
+
+            <div class="mini-actions">
+              <button class="btn btn-outline btn-sm" id="dupBtn">Duplicate</button>
+              <button class="btn btn-outline btn-sm btn-danger" id="delBtn">Delete</button>
+            </div>
+          </div>
+
+          <h5 style="margin-top:24px">Order Summary</h5>
+          <div class="summary-row"><span>Sheet width</span><b>24 in</b></div>
+          <div class="summary-row"><span>Sheet length</span><b id="sumLength">24 in</b></div>
+          <div class="summary-row"><span>Designs placed</span><b id="sumCount">0</b></div>
+          <div class="price-box">
+            <div class="plabel">Estimated total</div>
+            <div class="pval" id="sumPrice">$0.00</div>
+            <div class="psub" id="sumPriceSub">$12.00 / linear foot · 24" wide</div>
+          </div>
+          <button class="btn btn-lime btn-block" id="orderBtn">Place Order</button>
+        </div>
+      </div>
+    </div>
+
+<!-- DESIGN REVIEW MODAL -->
+<div class="modal-bg" id="reviewModal">
+  <div class="modal-box review-box">
+
+    <div class="modal-head">
+      <h3>⚠️ Review Your Design</h3>
+      <span class="modal-close" id="reviewClose">&times;</span>
+    </div>
+
+    <div class="review-content">
+
+      <p>
+        Before placing your order, please take a moment to carefully review your artwork.
+      </p>
+
+      <p>
+        <strong>Craftopia Customs prints your design exactly as it appears in the Gang Sheet Builder.</strong>
+      </p>
+
+      <ul>
+        <li>✔ Check image quality and resolution.</li>
+        <li>✔ Verify design size and placement.</li>
+        <li>✔ Confirm the correct quantity.</li>
+        <li>✔ Check spelling, graphics, and artwork.</li>
+        <li>✔ Review transparency, colors, and edges.</li>
+      </ul>
+
+      <div class="warning-box">
+        <strong>⚠ Important Notice</strong>
+
+        <p>
+          Any blurry, pixelated, stretched, cropped, low-resolution, or incorrectly uploaded artwork will be printed exactly as submitted.
+        </p>
+
+        <p>
+          Craftopia Customs does <strong>not</strong> edit, enhance, resize, or correct customer artwork before printing.
+        </p>
+
+        <p>
+          By continuing, you acknowledge that you have carefully reviewed your design and accept full responsibility for the final artwork submitted for printing.
+        </p>
+      </div>
+
+      <!-- ORDER DETAILS -->
+      <div id="reviewDetails" class="review-summary">
+        <!-- Filled automatically by JavaScript -->
+      </div>
+
+      <label class="agree-check">
+        <input type="checkbox" id="agreeCheck">
+
+        <span>
+          I have carefully reviewed my artwork and understand that it will be printed exactly as displayed. I accept full responsibility for the submitted design.
+        </span>
+
+      </label>
+
+    </div>
+
+    <div class="review-buttons">
+
+      <button class="btn btn-outline" id="cancelReview">
+        Cancel
+      </button>
+
+      <button class="btn btn-lime" id="continueOrder" disabled>
+        I Understand &amp; Continue
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+    <!-- ORDER SUMMARY MODAL -->
+    <div class="modal-bg" id="modalBg">
+      <div class="modal-box">
+        <div class="modal-head">
+          <h3>Order Summary</h3>
+          <span class="modal-close" id="modalClose">×</span>
+        </div>
+        <div id="modalSummary"></div>
+        <button class="btn btn-lime btn-block" style="margin-top:16px">Confirm &amp; Checkout</button>
+      </div>
+    </div>
+
+    
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">CRAFTOPIA<span style="color:var(--lime)">.</span></div>
+        <p>Edmonton's custom apparel studio for T-shirt printing, embroidery, DTF printing, business uniforms, branded workwear, safety apparel, hoodies, hats and promotional clothing.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#">Custom T-Shirt Printing</a>
+        <a href="#">Embroidery</a>
+        <a href="#">DTF Printing</a>
+        <a href="#">Company Uniforms</a>
+        <a href="#">Safety Vest Printing</a>
+      </div>
+      <div>
+        <h5>Areas We Serve</h5>
+        <a href="#">Edmonton</a>
+        <a href="#">Sherwood Park</a>
+        <a href="#">St. Albert</a>
+        <a href="#">Leduc</a>
+        <a href="#">Spruce Grove</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p>14827 123 Ave NW<br>Edmonton, Alberta</p>
+        <p>587-778-0189</p>
+        <p>craftopiacustoms5@gmail.com</p>
+        <p>Instagram: @craftopia.customs</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Craftopia Customs. All rights reserved.</span>
+      <span>Where Creativity Comes to Life Through Custom Apparel.</span>
+    </div>
+    
+  </div>
+</footer>
+
+<div class="modal-bg" id="authModalBg">
+<div class="modal auth-modal">
+    <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Sign In</button>
+        <button class="auth-tab" data-tab="signup">Sign Up</button>
+        <button class="auth-modal-close" id="authModalClose">&times;</button>
+    </div>
+    <div class="auth-scroll">
+        <form id="loginForm" class="auth-form active">
+            <h2>Welcome Back </h2>
+            <p class="auth-subtitle">Sign in to continue</p>
+            <p class="auth-error" id="loginError"></p>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <div class="password-box">
+                <input type="password" name="password" placeholder="Password" id="loginPassword" required>
+                <button type="button" class="toggle-password" data-target="loginPassword">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+            </div>
+            <div class="auth-options">
+                <label class="remember">
+                    <input type="checkbox" name="remember">
+                    <span>Remember Me</span>
+                </label>
+                <a href="form.html">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-lime btn-block">Sign In</button>
+            <p class="switch-text">Don't have an account?
+                <a href="#" class="switch-link" data-tab="signup">Sign Up</a>
+            </p>
+        </form>
+
+        <form id="signupForm" class="auth-form">
+            <h2>Create Account</h2>
+            <p class="auth-subtitle">Create your free account</p>
+            <p class="auth-error" id="signupError"></p>
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <div class="password-box">
+                <input type="password" name="password" placeholder="Password" id="signupPassword" required>
+                <button type="button" class="toggle-password" data-target="signupPassword">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+            </div>
+            <div class="password-box">
+                <input type="password" name="confirm_password" placeholder="Confirm Password" id="signupConfirmPassword" required>
+                <button type="button" class="toggle-password" data-target="signupConfirmPassword">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+            </div>
+            <label class="terms">
+                <input type="checkbox" required>
+                <span>I agree to the <a href="#">Terms & Conditions</a></span>
+            </label>
+            <button type="submit" class="btn btn-lime btn-block">Create Account</button>
+            <p class="switch-text">Already have an account?
+                <a href="#" class="switch-link" data-tab="login">Sign In</a>
+            </p>
+        </form>
+    </div>
+</div>
+</div>
+
+
+<script src="js/products-data.js"></script>
+<script src="js/script.js"></script>
+<script src="js/gangsheet.js"></script>
+
+</body>
+</html>

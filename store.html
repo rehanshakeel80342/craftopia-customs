@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All Products | Craftopia Customs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<link rel="icon" href="./pic/favicon-logo.png" type="image/png" sizes="512x512">
+<link rel="icon" type="image/png" sizes="32x32" href="./pic/favicon-logo.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./pic/favicon-logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./pic/favicon-logo.png">
+<link rel="icon" sizes="192x192" href="./pic/favicon-logo.png">
+<link rel="icon" sizes="512x512" href="./pic/favicon-logo.png">
+<meta name="theme-color" content="#B6E511">
+<meta name="msapplication-TileColor" content="#B6E511">
+</head>
+<body>
+
+<div class="announce">
+  <div class="announce-track">
+    <span class="announce-item">FREE LOCAL PICKUP IN EDMONTON</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">NO MINIMUM ON GANG SHEETS</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">BULK DISCOUNTS FOR TEAMS & BUSINESSES</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">FREE LOCAL PICKUP IN EDMONTON</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">NO MINIMUM ON GANG SHEETS</span>
+    <span class="announce-sep">|</span>
+    <span class="announce-item">BULK DISCOUNTS FOR TEAMS & BUSINESSES</span>
+    <span class="announce-sep">|</span>
+  </div>
+</div>
+
+<header>
+  <div class="nav">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <a href="index.html" class="logo">
+      <img src="pic/pic.png" alt="Craftopia Customs" class="logo-img" onerror="this.style.display='none'">
+    </a>
+
+ <nav class="nav-links" id="navLinks">
+  <button class="nav-sidebar-close" id="navSidebarClose" aria-label="Close menu">&times;</button>
+
+  <div class="sidebar-logo">
+    <img src="pic/pic.png" alt="Craftopia Customs" onerror="this.style.display='none'">
+  </div>
+
+  <div class="sidebar-search">
+    <div class="sidebar-search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="sidebarSearchInput" placeholder="Search products..." autocomplete="off">
+    </div>
+    <div class="sidebar-search-results" id="sidebarSearchResults"></div>
+  </div>
+
+  <a href="index.html">Home</a>
+  <a href="store.html">Products</a>
+  <a href="#about">About Us</a>
+  <a href="gangsheet.html">Customize Now</a>
+  <a href="#services">Services</a>
+
+  <div class="sidebar-shop-info">
+
+  <h6>CONTACT US</h6>
+
+  <div class="shop-contact-list">
+
+    <!-- Address -->
+    <div class="shop-contact-item">
+      <div class="contact-icon address-icon">
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+      <div class="contact-text">
+        <span>Visit Our Shop</span>
+        <p>14827 123 Ave NW<br>Edmonton, Alberta</p>
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <a href="tel:+15877780189" class="shop-contact-item contact-link">
+      <div class="contact-icon phone-icon">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+      <div class="contact-text">
+        <span>Call Us</span>
+        <p>587-778-0189</p>
+      </div>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:craftopiacustoms5@gmail.com" class="shop-contact-item contact-link">
+      <div class="contact-icon email-icon">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <div class="contact-text">
+        <span>Email Us</span>
+        <p>craftopiacustoms5@gmail.com</p>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Instagram -->
+  <a
+    href="https://www.instagram.com/craftopia.customs/"
+    target="_blank"
+    rel="noopener"
+    class="instagram-contact-btn"
+  >
+    <span class="instagram-logo">
+      <i class="fa-brands fa-instagram"></i>
+    </span>
+
+    <span class="instagram-btn-text">
+      <small>Follow us on Instagram</small>
+      <strong>@craftopia.customs</strong>
+    </span>
+
+    <i class="fa-solid fa-arrow-up-right-from-square instagram-arrow"></i>
+  </a>
+
+</div>
+
+  <div class="sidebar-legal">
+  <div class="sidebar-legal-links">
+    <a href="/terms">Terms &amp; Conditions</a>
+    <span class="legal-dot">•</span>
+    <a href="/privacy">Privacy Policy</a>
+    <span class="legal-dot">•</span>
+    <a href="/refund-policy">Refund Policy</a>
+  </div>
+  <small class="sidebar-legal-copy">© 2026 Your Shop. All rights reserved.</small>
+</div>
+
+
+
+</nav>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+
+     <div class="nav-icons">
+  
+ <div class="user-menu" id="userMenu">
+
+    <a href="form.html" class="icon-btn user-toggle" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </svg>
+    </a>
+
+    <div class="user-dropdown">
+        <a href="form.html" class="user-drop-link">Sign In</a>
+        <a href="form.html" class="user-drop-link">Sign Up</a>
+    </div>
+
+</div>
+
+      <a href="#cart" class="cart-link" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2.5 3h2l2.7 12.6a2 2 0 002 1.6h8.9a2 2 0 002-1.6L21 8H6"/></svg>
+        <span class="cart-count">0</span>
+      </a>
+      <a href="gangsheet.html" class="btn btn-lime btn-sm quote-btn">Get a Quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- STORE HERO -->
+  <section class="store-hero">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--lime)">Full Catalogue</span>
+      <h1>Shop Custom Apparel By Industry Or Product Type</h1>
+      <p>Every garment we carry, organized the way you shop — by industry, or browse the full product department list. Every product ships from one of our two trusted blank-apparel suppliers and can be printed or embroidered with your logo.</p>
+
+      <div class="store-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="storeSearch" placeholder="Search products… e.g. hoodie, hi-vis, polo, apron">
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SHOPPING BUTTONS -->
+  <section class="store-buttons">
+    <div class="wrap">
+      <div class="btn-row" id="mainButtonRow"></div>
+    </div>
+  </section>
+
+  <!-- DEPARTMENT CHIPS (shown under "More" / full Store view) -->
+  <section class="store-depts" id="deptSection">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Store &amp; More</span>
+          <h2 id="deptHeading">Browse All 15 Product Departments</h2>
+        </div>
+        <p>Already know what garment you need? Jump straight to its department.</p>
+      </div>
+      <div class="dept-chip-row" id="deptChipRow"></div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE FILTER + RESULTS -->
+  <section class="store-results">
+    <div class="wrap">
+      <div class="results-toolbar">
+        <div class="active-filter" id="activeFilterLabel">All Products</div>
+        <div class="audience-pills" id="audienceRow"></div>
+      </div>
+
+      <div class="results-count" id="resultsCount"></div>
+
+      <div id="storeGrid"></div>
+
+      <div id="productImages" style="display:none">
+  <img data-name="Gildan 75000 Hammer™ Maxweight T-Shirt" src="pic/cardsproduct/Gildan 75000 Hammer™ Maxweight T-Shirt .jpg">
+  <img data-name="Gildan 42000 Performance™ T-Shirt" src="pic/cardsproduct/Gildan 42000 Performance™ T-Shirt.jpg">
+  <img data-name="Gildan 42000B Youth Performance™ T-Shirt" src="pic/cardsproduct/Gildan 42000B Youth Performance™ T-Shirt.jpg">
+  <img data-name="Gildan 8000B Youth DryBlend™ T-Shirt" src="pic/cardsproduct/Gildan 8000B Youth DryBlend™ T-Shirt.jpg">
+  <img data-name="Gildan 5000 Heavy Cotton™ T-Shirt" src="pic/cardsproduct/Gildan 5000 Heavy Cotton™ T-Shirt.jpg">
+  <img data-name="ATC S350 Pro Team Short Sleeve Tee" src="pic/cardsproduct/ATC S350 Pro Team Short Sleeve Tee.jpg">
+  <img data-name="ATC ATC1000L Women's Everyday Cotton Tee" src="pic/cardsproduct/ATC ATC1000L Women's Everyday Cotton Tee.jpg">
+  <img data-name="ATC ATC1000Y Youth Everyday Cotton Tee" src="pic/cardsproduct/ATC ATC1000Y Youth Everyday Cotton Tee.jpg">
+  <img data-name="ATC L3520 Women's Pro Team Short Sleeve V-Neck Tee" src="pic/cardsproduct/ATC L3520 Women's Pro Team Short Sleeve V-Neck Tee.jpg">
+  <img data-name="ATC ATC1015 Everyday Cotton Long Sleeve Tee" src="pic/cardsproduct/ATC ATC1015 Everyday Cotton Long Sleeve Tee.jpg">
+  <img data-name="ATC ATC1700L Women's Garment-Dyed Heavyweight Boxy Tee" src="pic/cardsproduct/ATC ATC1700L Women's Garment-Dyed Heavyweight Boxy Tee.jpg">
+  <img data-name="Allmade AL2100CA Unisex Organic Cotton Tee" src="pic/cardsproduct/Allmade AL2100CA Unisex Organic Cotton Tee.jpg">
+  <img data-name="Allmade AL6004CA Unisex Tri-Blend Long Sleeve Tee" src="pic/cardsproduct/Allmade AL6004CA Unisex Tri-Blend Long Sleeve Tee.jpg">
+  <img data-name="Gildan 3000B Youth Light Cotton T-Shirt" src="pic/cardsproduct/Gildan 3000B Youth Light Cotton T-Shirt.jpg">
+  <img data-name="Gildan 65000L Softstyle® Women's Midweight T-Shirt" src="pic/cardsproduct/Gildan 65000L Softstyle® Women's Midweight T-Shirt.jpg">
+  <img data-name="Gildan 64000B Softstyle® Youth T-Shirt" src="pic/cardsproduct/Gildan 64000B Softstyle® Youth T-Shirt.jpg">
+  <img data-name="Gildan 5700 Heavy Cotton™ Raglan Three-Quarter Sleeve T-Shirt" src="pic/cardsproduct/Gildan 5700 Heavy Cotton™ Raglan Three-Quarter Sleeve T-Shirt.jpg">
+  <img data-name="Gildan 64V00 Softstyle® V-Neck T-Shirt" src="pic/cardsproduct/Gildan 64V00 Softstyle® V-Neck T-Shirt.jpg">
+  <img data-name="Gildan 64V00L Women's Softstyle® Junior Fit V-Neck T-Shirt" src="pic/cardsproduct/Gildan 64V00L Women's Softstyle® Junior Fit V-Neck T-Shirt.jpg">
+  <img data-name="Gildan 42400 Performance® Long Sleeve T-Shirt" src="pic/cardsproduct/Gildan 42400 Performance® Long Sleeve T-Shirt.jpg">
+  <img data-name="Next Level 7200 Apparel Unisex Heavyweight T-Shirt" src="pic/cardsproduct/Next Level 7200 Apparel Unisex Heavyweight T-Shirt.jpg">
+  <img data-name="Next Level 7610 Apparel Ladies' Heavyweight Boxy T-Shirt" src="pic/cardsproduct/Next Level 7610 Apparel Ladies' Heavyweight Boxy T-Shirt.jpg">
+  <img data-name="ATC WeRK250 Heavyweight Ring Spun Cotton T-Shirt" src="pic/cardsproduct/ATC WeRK250 Heavyweight Ring Spun Cotton T-Shirt.jpg">
+  <img data-name="ATC ATC3715 Essential Performance Long Sleeve Tee" src="pic/cardsproduct/ATC ATC3715 Essential Performance Long Sleeve Tee.jpg">
+  <img data-name="ATC L3517 Women's Pro Team Heather ProFormance V-Neck Tee" src="pic/cardsproduct/ATC L3517 Women's Pro Team Heather ProFormance V-Neck Tee .jpg ">
+  <img data-name="ATC L3520LS Women's Pro Team Long Sleeve V-Neck Tee" src="pic/cardsproduct/ATC L3520LS Women's Pro Team Long Sleeve V-Neck Tee.jpg">
+  <img data-name="ATC L350 Women's Pro Team Short Sleeve Tee" src="pic/cardsproduct/ATC L350 Women's Pro Team Short Sleeve Tee.jpg">
+  <img data-name="OGIO OE320 Endurance Pulse Crew Shirt" src="pic/cardsproduct/OGIO OE320 Endurance Pulse Crew Shirt.jpg">
+  <img data-name="Nike NKBQ5231 Dri-Fit Cotton/Poly T-Shirt" src="pic/cardsproduct/Nike NKBQ5231 Dri-Fit CottonPoly T-Shirt.jpg">
+  <img data-name="ATC Y350 Youth Pro Team Short Sleeve Tee" src="pic/cardsproduct/ATC Y350 Youth Pro Team Short Sleeve Tee.jpg">
+  <img data-name="ATC ATC3715Y Essential Performance Youth Long Sleeve Tee" src="pic/cardsproduct/ATC ATC3715Y Essential Performance Youth Long Sleeve Tee.jpg">
+  <img data-name="Next Level N3311 Youth Cotton Long Sleeve T-Shirt" src="pic/cardsproduct/Next Level N3311 Youth Cotton Long Sleeve T-Shirt.jpg">
+  <img data-name="Gildan 5400B Youth Heavy Cotton™ Long Sleeve T-Shirt" src="pic/cardsproduct/Gildan 5400B Youth Heavy Cotton™ Long Sleeve T-Shirt.jpg">
+  <img data-name="ATC Y350LS Youth Pro Team Long Sleeve Tee" src="pic/cardsproduct/ATC Y350LS Youth Pro Team Long Sleeve Tee.jpg">
+  <img data-name="ATC 3600Y Youth Pro Spun™ Tee" src="pic/cardsproduct/ATC 3600Y Youth Pro Spun™ Tee.jpg">
+  <img data-name="ATC ATC1015Y Youth Everyday Cotton Long Sleeve Tee" src="pic/cardsproduct/ATC ATC1015Y Youth Everyday Cotton Long Sleeve Tee.jpg">
+  <img data-name="ATC Y3550 Pro Club Youth Tee" src="pic/cardsproduct/ATC Y3550 Pro Club Youth Tee.jpg">
+  <img data-name="BELLA+CANVAS 8882 Ladies' Flowy Cropped T-Shirt" src="pic/cardsproduct/BELLA+CANVAS 8882 Ladies' Flowy Cropped T-Shirt.jpg">
+  <img data-name="CX2 Rugged S05280 Heavyweight Cotton Oversized T-Shirt" src="pic/cardsproduct/CX2 Rugged S05280 Heavyweight Cotton Oversized T-Shirt.jpg">
+  <img data-name="Team 365 TT11WL Ladies' Zone Performance Long-Sleeve T-Shirt" src="pic/cardsproduct/Team 365 TT11WL Ladies' Zone Performance Long-Sleeve T-Shirt.jpg">
+  <img data-name="Badger Sport 421300 Warp Short-Sleeve Tee" src="pic/cardsproduct/Badger Sport 421300 Warp Short-Sleeve Tee.jpg">
+  <img data-name="Athletic Knit A1800 Short-Sleeve T-Shirts - Men, Ladies & Youth" src="pic/cardsproduct/Athletic Knit A1800 Short-Sleeve T-Shirts - Men, Ladies & Youth.jpg">
+  <img data-name="CX2 Hi-Vis S05945 Primeguard Adult Hi-Vis T-Shirt" src="pic/cardsproduct/CX2 Hi-Vis S05945 Primeguard Adult Hi-Vis T-Shirt.jpg">
+  <img data-name="CX2 Hi-Vis S05948 Beacon Adult Long-Sleeve Hi-Vis T-Shirt" src="pic/cardsproduct/CX2 Hi-Vis S05948 Beacon Adult Long-Sleeve Hi-Vis T-Shirt.jpg">
+  <img data-name="CX2 Hi-Vis S05960 Watchman Adult Hi-Vis T-Shirt" src="pic/cardsproduct/CX2 Hi-Vis S05960 Watchman Adult Hi-Vis T-Shirt.jpg">
+  <img data-name="CX2 Hi-Vis S05970 Lookout Adult Long-Sleeve Hi-Vis T-Shirt" src="pic/cardsproduct/CX2 Hi-Vis S05970 Lookout Adult Long-Sleeve Hi-Vis T-Shirt.jpg">
+  <img data-name="CX2 Hi-Vis S05990 Optimum Cotton Hi-Vis T-Shirt" src="pic/cardsproduct/CX2 Hi-Vis S05990 Optimum Cotton Hi-Vis T-Shirt.jpg">
+  <img data-name="CX2 Hi-Vis S05995 Paramount Cotton Hi-Vis Long-Sleeve T-Shirt" src="pic/cardsproduct/CX2 Hi-Vis S05995 Paramount Cotton Hi-Vis Long-Sleeve T-Shirt.jpg">
+  <img data-name="CX2 Hi-Vis S05975 Citadel Adult Cotton Long-Sleeve Safety T-Shirt" src="pic/cardsproduct/CX2 Hi-Vis S05975 Citadel Adult Cotton Long-Sleeve Safety T-Shirt.jpg">
+  <img data-name="Tough Duck ST21 Long-Sleeve Safety Cotton T-Shirt" src="pic/cardsproduct/Tough Duck ST21 Long-Sleeve Safety Cotton T-Shirt.jpg">
+  <img data-name="Gildan 64200 Softstyle® Tank Top" src="pic/cardsproduct/Gildan 64200 Softstyle® Tank Top.jpg">
+  <img data-name="Gildan G5200 Heavy Cotton™ Tank Top" src="pic/cardsproduct/Gildan G5200 Heavy Cotton™ Tank Top.jpg">
+  <img data-name="Gildan 64200L Women's Softstyle® Tank Top" src="pic/cardsproduct/Gildan 64200L Women's Softstyle® Tank Top.jpg">
+  <img data-name="Next Level 6733 Tri-Blend Racerback Tank Top" src="pic/cardsproduct/Next Level 6733 Tri-Blend Racerback Tank Top.jpg">
+  <img data-name="Gildan 2200 Ultra Cotton® Tank Top" src="pic/cardsproduct/Gildan 2200 Ultra Cotton® Tank Top.jpg">
+  <img data-name="Next Level 1533 Ladies' Ideal Racerback Tank Top" src="pic/cardsproduct/Next Level 1533 Ladies' Ideal Racerback Tank Top.jpg">
+  <img data-name="KOI KOI8055L Element Tri-Blend Ladies' Racerback Tank Top" src="pic/cardsproduct/KOI KOI8055L Element Tri-Blend Ladies' Racerback Tank Top.jpg">
+  <img data-name="ATC ATC1004L Women's Everyday Cotton Tank Top" src="pic/cardsproduct/ATC ATC1004L Women's Everyday Cotton Tank Top.jpg">
+  <img data-name="ATC ATC1004 Everyday Cotton Tank Top" src="pic/cardsproduct/ATC ATC1004 Everyday Cotton Tank Top.jpg">
+  <img data-name="ATC ATC3604L Women's Pro Spun™ Racerback Tank" src="pic/cardsproduct/ATC ATC3604L Women's Pro Spun™ Racerback Tank.jpg">
+  <img data-name="ATC Y3535 Pro Club Reversible Youth Tank Top" src="pic/cardsproduct/ATC Y3535 Pro Club Reversible Youth Tank Top.jpg">
+  <img data-name="ATC S3527 Pro Team Sleeveless Tee" src="pic/cardsproduct/ATC S3527 Pro Team Sleeveless Tee.jpg">
+  <img data-name="ATC L3527 Women's Pro Team Sleeveless V-Neck Tee" src="pic/cardsproduct/ATC L3527 Women's Pro Team Sleeveless V-Neck Tee.jpg">
+  <img data-name="ATC Y3524 Youth Pro Mesh Reversible Tank Top" src="pic/cardsproduct/ATC Y3524 Youth Pro Mesh Reversible Tank Top.jpg">
+  <img data-name="BELLA+CANVAS 6682 Ladies' Racerback Cropped Tank" src="pic/cardsproduct/BELLA+CANVAS 6682 Ladies' Racerback Cropped Tank.jpg">
+  <img data-name="Badger Sport 416600 Ladies' B-Core Racerback Tank" src="pic/cardsproduct/Badger Sport 416600 Ladies' B-Core Racerback Tank.jpg">
+  <img data-name="Augusta 1202 Ladies' Poly/Spandex Solid Racerback Tank" src="pic/cardsproduct/Augusta 1202 Ladies' PolySpandex Solid Racerback Tank.jpg">
+  <img data-name="Augusta 1203 Girls' Poly/Spandex Solid Racerback Tank" src="pic/cardsproduct/Augusta 1203 Girls' PolySpandex Solid Racerback Tank .jpg">
+  <img data-name="Badger Sport 463600 Ladies' B-Sport Bra" src="pic/cardsproduct/Badger Sport 463600 Ladies' B-Sport Bra.jpg">
+  <img data-name="Badger Sport 263600 Girls' B-Sport Bra" src="pic/cardsproduct/Badger Sport 263600 Girls' B-Sport Bra.jpg">
+  <img data-name="ATC Pro Team S3535 Pro Club Reversible Mesh Tank" src="pic/cardsproduct/ATC Pro Team S3535 Pro Club Reversible Mesh Tank.jpg">
+  <img data-name="Nike NKDC2104 Micro Pique 2.0 Long Sleeve Polo Shirt" src="pic/cardsproduct/Nike NKDC2104 Micro Pique 2.0 Long Sleeve Polo Shirt.jpg">
+  <img data-name="Coal Harbour S365P Everyday Snag Resist Pocket Polo" src="pic/cardsproduct/Coal Harbour S365P Everyday Snag Resist Pocket Polo.jpg">
+  <img data-name="Nike NKDC1963 Micro Pique 2.0 Polo Shirt" src="pic/cardsproduct/Nike NKDC1963 Micro Pique 2.0 Polo Shirt.jpg">
+  <img data-name="OGIO OG101 Caliber 2.0 Polo" src="pic/cardsproduct/OGIO OG101 Caliber 2.0 Polo.jpg">
+  <img data-name="Nike 637167 Dri-Fit Vertical Mesh Polo" src="pic/cardsproduct/Nike 637167 Dri-Fit Vertical Mesh Polo.jpg">
+  <img data-name="Coal Harbour S365 Everyday Snag Resistant Polo" src="pic/cardsproduct/Coal Harbour S365 Everyday Snag Resistant Polo.jpg">
+  <img data-name="OGIO LOG101 Women's Jewel Polo" src="pic/cardsproduct/OGIO LOG101 Women's Jewel Polo.jpg">
+  <img data-name="Gildan G8800 DryBlend® Jersey Sport Polo" src="pic/cardsproduct/Gildan G8800 DryBlend® Jersey Sport Polo.jpg">
+  <img data-name="Nike NKDC1991 Dri-Fit Pique 2.0 Ladies Polo" src="pic/cardsproduct/Nike NKDC1991 Dri-Fit Pique 2.0 Ladies Polo.jpg">
+  <img data-name="Coal Harbour Y365 Everyday Snag Resist Youth Polo" src="pic/cardsproduct/Coal Harbour Y365 Everyday Snag Resist Youth Polo.jpg">
+  <img data-name="Coal Harbour S4047 Everyday CVC Polo" src="pic/cardsproduct/Coal Harbour S4047 Everyday CVC Polo.jpg">
+  <img data-name="Coal Harbour L365 Everyday Snag Resist Ladies' Polo" src="pic/cardsproduct/Coal Harbour L365 Everyday Snag Resist Ladies' Polo.jpg">
+  <img data-name="Coal Harbour S4046 Everyday Blend Polo" src="pic/cardsproduct/Coal Harbour S4046 Everyday Blend Polo.jpg">
+  <img data-name="Coal Harbour L4047 Everyday CVC Ladies Polo" src="pic/cardsproduct/Coal Harbour L4047 Everyday CVC Ladies Polo.jpg">
+  <img data-name="Gildan 64800L Softstyle® Women's Pique Polo" src="pic/cardsproduct/Gildan 64800L Softstyle® Women's Pique Polo.jpg">
+  <img data-name="Coal Harbour S365LS Everyday Snag Resist Long Sleeve Polo" src="pic/cardsproduct/Coal Harbour S365LS Everyday Snag Resist Long Sleeve Polo.jpg">
+  <img data-name="Gildan 64800 Softstyle® Adult Pique Polo" src="pic/cardsproduct/Gildan 64800 Softstyle® Adult Pique Polo.jpg">
+  <img data-name="Nike 637165 Women's Dri-Fit Vertical Mesh Polo" src="pic/cardsproduct/Nike 637165 Women's Dri-Fit Vertical Mesh Polo.jpg">
+  <img data-name="ATC S3560 Pro Club Polo" src="pic/cardsproduct/ATC S3560 Pro Club Polo.jpg">
+  <img data-name="Gildan 8800B Youth DryBlend® Jersey Polo" src="pic/cardsproduct/Gildan 8800B Youth DryBlend® Jersey Polo.jpg">
+  <img data-name="Coal Harbour L4046 Everyday Blend Ladies Polo" src="pic/cardsproduct/Coal Harbour L4046 Everyday Blend Ladies Polo.jpg">
+  <img data-name="Holloway 226302 Ladies' Prep Street Rugby Crop Polo" src="pic/cardsproduct/Holloway 226302 Ladies' Prep Street Rugby Crop Polo.jpg">
+  <img data-name="Holloway 223326 Ladies' Court Sleeveless Polo" src="pic/cardsproduct/Holloway 223326 Ladies' Court Sleeveless Polo.jpg">
+  <img data-name="Holloway 222730 Ladies' Avenger Polo" src="pic/cardsproduct/Holloway 222730 Ladies' Avenger Polo.jpg">
+  <img data-name="Coal Harbour Y445 Youth Snag Resistant Sport Shirt" src="pic/cardsproduct/Coal Harbour Y445 Youth Snag Resistant Sport Shirt.jpg">
+  <img data-name="Coal Harbour L6021 Women's Everyday Short Sleeve Woven Shirt" src="pic/cardsproduct/Coal Harbour L6021 Women's Everyday Short Sleeve Woven Shirt.jpg">
+  <img data-name="Coal Harbour L6013 Women's Everyday Long Sleeve Woven Shirt" src="pic/cardsproduct/Coal Harbour L6013 Women's Everyday Long Sleeve Woven Shirt.jpg">
+  <img data-name="Coal Harbour D6021 Everyday Short Sleeve Woven Shirt" src="pic/cardsproduct/Coal Harbour D6021 Everyday Short Sleeve Woven Shirt.jpg">
+  <img data-name="Coal Harbour D6013 Everyday Long Sleeve Woven Shirt" src="pic/cardsproduct/Coal Harbour D6013 Everyday Long Sleeve Woven Shirt.jpg">
+  <img data-name="Red Kap SY20 Short Sleeve Woven Crew Shirt" src="pic/cardsproduct/Red Kap SY20 Short Sleeve Woven Crew Shirt.jpg">
+  <img data-name="ATC S4039 Pro Team Sport Shirt" src="pic/cardsproduct/ATC S4039 Pro Team Sport Shirt.jpg">
+  <img data-name="CORE365 88193 Men's Operate Twill Dress Shirt" src="pic/cardsproduct/CORE365 88193 Men's Operate Twill Dress Shirt.jpg">
+  <img data-name="CORE365 CE510L Ultra UVP® Marina Shirt" src="pic/cardsproduct/CORE365 CE510L Ultra UVP® Marina Shirt.jpg">
+  <img data-name="CORE365 CE510 Men's Ultra UVP Marina Shirt" src="pic/cardsproduct/CORE365 CE510 Men's Ultra UVP Marina Shirt.jpg">
+  <img data-name="Biz Collection S914MS Men's London Short-Sleeve Shirt" src="pic/cardsproduct/Biz Collection S914MS Men's London Short-Sleeve Shirt.jpg">
+  <img data-name="Biz Collection S424ML Men's Ashford Shirt" src="pic/cardsproduct/Biz Collection S424ML Men's Ashford Shirt.jpg">
+  <img data-name="ATC ATCF2500 Everyday Fleece Hooded Sweatshirt" src="pic/cardsproduct/ATC ATCF2500 Everyday Fleece Hooded Sweatshirt.jpg">
+  <img data-name="Gildan 18500 Heavy Blend™ Hooded Sweatshirt" src="pic/cardsproduct/Gildan 18500 Heavy Blend™ Hooded Sweatshirt.jpg">
+  <img data-name="ATC ATCY2500 Youth Everyday Fleece Hooded Sweatshirt" src="pic/cardsproduct/ATC ATCY2500 Youth Everyday Fleece Hooded Sweatshirt.jpg">
+  <img data-name="ATC ATCF2600 Everyday Fleece Full-Zip Hooded Sweatshirt" src="pic/cardsproduct/ATC ATCF2600 Everyday Fleece Full-Zip Hooded Sweatshirt.jpg">
+  <img data-name="ATC ATCY6500 Everyday Earthwash Youth Hoodie" src="pic/cardsproduct/ATC ATCY6500 Everyday Earthwash Youth Hoodie.jpg">
+  <img data-name="Gildan 19500 Hammer™ Maxweight Hooded Sweatshirt" src="pic/cardsproduct/Gildan 19500 Hammer™ Maxweight Hooded Sweatshirt.jpg">
+  <img data-name="ATC WeRK420 Heavyweight Fleece Hood" src="pic/cardsproduct/ATC WeRK420 Heavyweight Fleece Hood.jpg">
+  <img data-name="ATC WeRK422 Heavyweight Fleece Full-Zip Hood" src="pic/cardsproduct/ATC WeRK422 Heavyweight Fleece Full-Zip Hood.jpg">
+  <img data-name="ATC ATCF2100 Essential Performance Hood" src="pic/cardsproduct/ATC ATCF2100 Essential Performance Hood.jpg">
+  <img data-name="ATC ATCY2100 Essential Youth Performance Hood" src="pic/cardsproduct/ATC ATCY2100 Essential Youth Performance Hood.jpg">
+  <img data-name="KOI KOI2056 Element French Terry Hood" src="pic/cardsproduct/KOI KOI2056 Element French Terry Hood.jpg">
+  <img data-name="Nike DR1499 Club Fleece P/O Corporate Hoodie" src="pic/cardsproduct/Nike DR1499 Club Fleece P,O Corporate Hoodie.jpg">
+  <img data-name="Nike DR1513 Club Fleece FZ Corporate Hoodie" src="pic/cardsproduct/Nike DR1513 Club Fleece FZ Corporate Hoodie.jpg">
+  <img data-name="Nike CN9473 Therma-FIT Pullover Fleece Hoodie" src="pic/cardsproduct/Nike CN9473 Therma-FIT Pullover Fleece Hoodie.jpg">
+  <img data-name="Nike CJ1611 Club Fleece Pullover Hoodie" src="pic/cardsproduct/Nike CJ1611 Club Fleece Pullover Hoodie.jpg">
+  <img data-name="ATC Y2600 Youth Everyday Fleece Full-Zip Hooded Sweatshirt" src="pic/cardsproduct/ATC Y2600 Youth Everyday Fleece Full-Zip Hooded Sweatshirt.jpg">
+  <img data-name="Gildan 18600B Youth Heavy Blend™ Full-Zip Hooded Sweatshirt" src="pic/cardsproduct/Gildan 18600B Youth Heavy Blend™ Full-Zip Hooded Sweatshirt.jpg">
+  <img data-name="Gildan 18500B Youth Heavy Blend™ Hooded Sweatshirt" src="pic/cardsproduct/Gildan 18500B Youth Heavy Blend™ Hooded Sweatshirt.jpg">
+  <img data-name="OGIO LOE700 Women's Endurance Fulcrum Full Zip" src="pic/cardsproduct/OGIO LOE700 Women's Endurance Fulcrum Full Zip.jpg">
+  <img data-name="Callaway CGM540 Quarter-Zip Water-Repellent Pullover" src="pic/cardsproduct/Callaway CGM540 Quarter-Zip Water-Repellent Pullover.jpg">
+  <img data-name="ATC ATCF2700 Everyday Fleece Quarter-Zip Sweatshirt" src="pic/cardsproduct/ATC ATCF2700 Everyday Fleece Quarter-Zip Sweatshirt.jpg">
+  <img data-name="ATC F2035 Game Day™ Fleece Half-Zip Sweatshirt" src="pic/cardsproduct/ATC F2035 Game Day™ Fleece Half-Zip Sweatshirt.jpg">
+  <img data-name="ATC WeRK421 Heavyweight Fleece Crewneck" src="pic/cardsproduct/ATC WeRK421 Heavyweight Fleece Crewneck.jpg">
+  <img data-name="Gildan 18000B Heavy Blend™ Youth Crewneck Sweatshirt" src="pic/cardsproduct/Gildan 18000B Heavy Blend™ Youth Crewneck Sweatshirt.jpg">
+  <img data-name="Badger Sport 410800 B-Core Sleeveless Hoodie" src="pic/cardsproduct/Badger Sport 410800 B-Core Sleeveless Hoodie.jpg">
+  <img data-name="BELLA+CANVAS 7502 Women's Crop Fleece Hoodie" src="pic/cardsproduct/BELLA+CANVAS 7502 Women's Crop Fleece Hoodie.jpg">
+  <img data-name="C2 Sport 560200 Ladies' C2 Quarter-Zip Pullover" src="pic/cardsproduct/C2 Sport 560200 Ladies' C2 Quarter-Zip Pullover.jpg">
+  <img data-name="Team 365 TT41 Men's Zone Performance Sun-Protective Hoodie" src="pic/cardsproduct/Team 365 TT41 Men's Zone Performance Sun-Protective Hoodie.jpg">
+  <img data-name="Team 365 TT31W Ladies' Zone Performance Quarter-Zip" src="pic/cardsproduct/Team 365 TT31W Ladies' Zone Performance Quarter-Zip.jpg">
+  <img data-name="Team 365 TT31 Men's Zone Performance Quarter-Zip" src="pic/cardsproduct/Team 365 TT31 Men's Zone Performance Quarter-Zip.jpg">
+  <img data-name="Holloway 223493 Girls' Effortless Hoodie" src="pic/cardsproduct/Holloway 223493 Girls' Effortless Hoodie.jpg">
+  <img data-name="CX2 Hi-Vis L01380 Infinity Full-Zip Hooded Sweatshirt with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01380 Infinity Full-Zip Hooded Sweatshirt with Detachable Hood.jpg">
+  <img data-name="CX2 Hi-Vis L00682 Freedom Full-Zip Hooded Sweatshirt" src="pic/cardsproduct/CX2 Hi-Vis L00682 Freedom Full-Zip Hooded Sweatshirt.jpg">
+  <img data-name="CX2 Hi-Vis L01310 Freightliner Insulated Softshell with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01310 Freightliner Insulated Softshell with Detachable Hood.jpg">
+  <img data-name="CX2 Hi-Vis L01375 Long Haul Adult Pullover Hooded Sweatshirt" src="pic/cardsproduct/CX2 Hi-Vis L01375 Long Haul Adult Pullover Hooded Sweatshirt.jpg">
+  <img data-name="Coal Harbour CH7690Y Essential Go-To Puffy Youth Jacket" src="pic/cardsproduct/Coal Harbour CH7690Y Essential Go-To Puffy Youth Jacket.jpg">
+  <img data-name="Coal Harbour CH7691L Essential Go-To Puffy Ladies Jacket" src="pic/cardsproduct/Coal Harbour CH7691L Essential Go-To Puffy Ladies Jacket.jpg">
+  <img data-name="DryFrame DF7612 Essential Puffy Jacket" src="pic/cardsproduct/DryFrame DF7612 Essential Puffy Jacket.jpg">
+  <img data-name="Coal Harbour L7610 Essential Water-Repellent Ladies' Softshell Jacket" src="pic/cardsproduct/Coal Harbour L7610 Essential Water-Repellent Ladies' Softshell Jacket.jpg">
+  <img data-name="Coal Harbour TJ7603 Everyday Soft Shell Tall Jacket" src="pic/cardsproduct/Coal Harbour TJ7603 Everyday Soft Shell Tall Jacket.jpg">
+  <img data-name="Coal Harbour Y7603 Youth Everyday Soft Shell Jacket" src="pic/cardsproduct/Coal Harbour Y7603 Youth Everyday Soft Shell Jacket.jpg">
+  <img data-name="Coal Harbour L7605 Women's Essential Hooded Stretch Soft Shell Jacket" src="pic/cardsproduct/Coal Harbour L7605 Women's Essential Hooded Stretch Soft Shell Jacket.jpg">
+  <img data-name="Coal Harbour L7603 Women's Everyday Soft Shell Jacket" src="pic/cardsproduct/Coal Harbour L7603 Women's Everyday Soft Shell Jacket.jpg">
+  <img data-name="ATC WeRK7645 Yukon Hooded Bomber Jacket" src="pic/cardsproduct/ATC WeRK7645 Yukon Hooded Bomber Jacket.jpg">
+  <img data-name="ATC WeRK7640 Fort Mac Jacket with Detachable Hood" src="pic/cardsproduct/ATC WeRK7640 Fort Mac Jacket with Detachable Hood.jpg">
+  <img data-name="Holloway 229744 Ladies' Rowhouse Cropped Jacket" src="pic/cardsproduct/Holloway 229744 Ladies' Rowhouse Cropped Jacket.jpg">
+  <img data-name="CX2 Hi-Vis L01250 Armour Insulated Parka with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01250 Armour Insulated Parka with Detachable Hood.jpg">
+  <img data-name="CX2 Hi-Vis L01220 Patch Quilted Jacket" src="pic/cardsproduct/CX2 Hi-Vis L01220 Patch Quilted Jacket.jpg">
+  <img data-name="CX2 Hi-Vis L01275 Kenworth Five-in-One Coat with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01275 Kenworth Five-in-One Coat with Detachable Hood.jpg">
+  <img data-name="CX2 Hi-Vis L01277 Peterbuilt Three-in-One Bomber Jacket with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01277 Peterbuilt Three-in-One Bomber Jacket with Detachable Hood.jpg">
+  <img data-name="CX2 Hi-Vis L01305 Shield Softshell Jacket with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01305 Shield Softshell Jacket with Detachable Hood.jpg">
+  <img data-name="CX2 Hi-Vis L01290 International Cotton Canvas Bomber Jacket with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01290 International Cotton Canvas Bomber Jacket with Detachable Hood.jpg">
+  <img data-name="CX2 Hi-Vis L01292 Kingpin Cotton Canvas Insulated Parka with Detachable Hood" src="pic/cardsproduct/CX2 Hi-Vis L01292 Kingpin Cotton Canvas Insulated Parka with Detachable Hood.jpg">
+  <img data-name="DryFrame DF7673 Dry Tech Insulated Vest" src="pic/cardsproduct/DryFrame DF7673 Dry Tech Insulated Vest.jpg">
+  <img data-name="Harriton M723 Unisex ClimaBloc® Station Vest" src="pic/cardsproduct/Harriton M723 Unisex ClimaBloc® Station Vest.jpg">
+  <img data-name="Stormtech VX-4 Men's Reactor Fleece Vest" src="pic/cardsproduct/Stormtech VX-4 Men's Reactor Fleece Vest.jpg">
+  <img data-name="Stormtech KTV-1 Men's Pacifica Vest" src="pic/cardsproduct/Stormtech KTV-1 Men's Pacifica Vest.jpg">
+  <img data-name="Stormtech KTV-1W Women's Pacifica Vest" src="pic/cardsproduct/Stormtech KTV-1W Women's Pacifica Vest.jpg">
+  <img data-name="CORE365 CE703 Men's Techno Lite Unlined Vest" src="pic/cardsproduct/CORE365 CE703 Men's Techno Lite Unlined Vest.jpg">
+  <img data-name="Harriton M415 Men's Pilbloc™ V-Neck Sweater Vest" src="pic/cardsproduct/Harriton M415 Men's Pilbloc™ V-Neck Sweater Vest.jpg">
+  <img data-name="Harriton M415W Ladies' Pilbloc™ V-Neck Sweater Vest" src="pic/cardsproduct/Harriton M415W Ladies' Pilbloc™ V-Neck Sweater Vest.jpg">
+  <img data-name="CX2 Hi-Vis L01160 Guardian Adult Mesh Five-Point Tear-Away Vest" src="pic/cardsproduct/CX2 Hi-Vis L01160 Guardian Adult Mesh Five-Point Tear-Away Vest.jpg">
+  <img data-name="CX2 Hi-Vis L01190 Surveyor Hi-Vis Surveyor's Vest" src="pic/cardsproduct/CX2 Hi-Vis L01190 Surveyor Hi-Vis Surveyor's Vest.jpg">
+  <img data-name="CX2 Hi-Vis L01225 Mack Quilted Vest" src="pic/cardsproduct/CX2 Hi-Vis L01225 Mack Quilted Vest.jpg">
+  <img data-name="CX2 Hi-Vis L01145 Vanguard Tricot Tear-Away Vest" src="pic/cardsproduct/CX2 Hi-Vis L01145 Vanguard Tricot Tear-Away Vest.jpg">
+  <img data-name="CX2 Hi-Vis L01295 Titan Cotton Canvas Vest" src="pic/cardsproduct/CX2 Hi-Vis L01295 Titan Cotton Canvas Vest.jpg">
+  <img data-name="Tough Duck SV09 Harness-Compatible Safety Vest" src="pic/cardsproduct/Tough Duck SV09 Harness-Compatible Safety Vest.jpg">
+  <img data-name="Red Kap PT88 Industrial Cargo Pants" src="pic/cardsproduct/Red Kap PT88 Industrial Cargo Pants.jpg">
+  <img data-name="Red Kap PT20 Dura-Kap Industrial Pants" src="pic/cardsproduct/Red Kap PT20 Dura-Kap Industrial Pants.jpg">
+  <img data-name="Gildan 18400 Heavy Blend™ Open-Bottom Sweatpants" src="pic/cardsproduct/Gildan 18400 Heavy Blend™ Open-Bottom Sweatpants.jpg">
+  <img data-name="KOI KOI2280 Element CFF Open-Bottom Sweatpants" src="pic/cardsproduct/KOI KOI2280 Element CFF Open-Bottom Sweatpants.jpg">
+  <img data-name="ATC ATCF2180 Essential Performance Fleece Pant" src="pic/cardsproduct/ATC ATCF2180 Essential Performance Fleece Pant.jpg">
+  <img data-name="ATC Y2800 Youth Everyday Fleece Sweatpants" src="pic/cardsproduct/ATC Y2800 Youth Everyday Fleece Sweatpants.jpg">
+  <img data-name="ATC ATCF2800 Everyday Fleece Sweatpants" src="pic/cardsproduct/ATC ATCF2800 Everyday Fleece Sweatpants.jpg">
+  <img data-name="ATC Y2057 Game Day Fleece Youth Pants" src="pic/cardsproduct/ATC Y2057 Game Day Fleece Youth Pants.jpg">
+  <img data-name="Holloway 223866 Girls' City Flex Pant" src="pic/cardsproduct/Holloway 223866 Girls' City Flex Pant.jpg">
+  <img data-name="Holloway 223766 Ladies' City Flex Pant" src="pic/cardsproduct/Holloway 223766 Ladies' City Flex Pant.jpg">
+  <img data-name="Badger Sport 463700 Ladies' Panel Tight" src="pic/cardsproduct/Badger Sport 463700 Ladies' Panel Tight.jpg">
+  <img data-name="CX2 Hi-Vis P01255 Cabover Insulated Overall" src="pic/cardsproduct/CX2 Hi-Vis P01255 Cabover Insulated Overall.jpg">
+  <img data-name="Tough Duck S614 Insulated Safety Pull-On Pant" src="pic/cardsproduct/Tough Duck S614 Insulated Safety Pull-On Pant.jpg">
+  <img data-name="Tough Duck S792 Unlined Safety Coverall" src="pic/cardsproduct/Tough Duck S792 Unlined Safety Coverall.jpg">
+  <img data-name="ATC ATCF2875 Everyday Fleece Short" src="pic/cardsproduct/ATC ATCF2875 Everyday Fleece Short.jpg">
+  <img data-name="ATC Y3525 Youth Pro Mesh Shorts" src="pic/cardsproduct/ATC Y3525 Youth Pro Mesh Shorts.jpg">
+  <img data-name="ATC Y3536 Pro Club Five-Inch Mesh Youth Short" src="pic/cardsproduct/ATC Y3536 Pro Club Five-Inch Mesh Youth Short.jpg">
+  <img data-name="ATC Y355 Youth Pro Team Shorts" src="pic/cardsproduct/ATC Y355 Youth Pro Team Shorts.jpg">
+  <img data-name="ATC Y357P Pro Team Five-Inch Youth Short with Pocket" src="pic/cardsproduct/ATC Y357P Pro Team Five-Inch Youth Short with Pocket.jpg">
+  <img data-name="Holloway 229556 Weld Shorts" src="pic/cardsproduct/Holloway 229556 Weld Shorts.jpg">
+  <img data-name="C2 Sport 512700 C2 Performance Seven-Inch Inseam Shorts" src="pic/cardsproduct/C2 Sport 512700 C2 Performance Seven-Inch Inseam Shorts.jpg">
+  <img data-name="Augusta 1420 Training Shorts" src="pic/cardsproduct/Augusta 1420 Training Shorts.jpg">
+  <img data-name="Augusta 1407 Youth Reversible Wicking Shorts" src="pic/cardsproduct/Augusta 1407 Youth Reversible Wicking Shorts.jpg">
+  <img data-name="Augusta 1421 Youth Training Shorts" src="pic/cardsproduct/Augusta 1421 Youth Training Shorts.jpg">
+  <img data-name="Augusta 1265 Ladies' Pulse Shorts" src="pic/cardsproduct/Augusta 1265 Ladies' Pulse Shorts.jpg">
+  <img data-name="Augusta 1232 Ladies' Dare Shorts" src="pic/cardsproduct/Augusta 1232 Ladies' Dare Shorts.jpg">
+  <img data-name="Augusta 1266 Girls' Pulse Team Shorts" src="pic/cardsproduct/Augusta 1266 Girls' Pulse Team Shorts.jpg">
+  <img data-name="Augusta 9125 Ladies' Energy Skirt" src="pic/cardsproduct/Augusta 9125 Ladies' Energy Skirt.jpg">
+  <img data-name="Augusta 9126 Girls' Energy Skirt" src="pic/cardsproduct/Augusta 9126 Girls' Energy Skirt.jpg">
+  <img data-name="Holloway 223322 Ladies' Court Skort" src="pic/cardsproduct/Holloway 223322 Ladies' Court Skort.jpg">
+  <img data-name="Augusta 6925 Ladies' Cheer Squad Skirt" src="pic/cardsproduct/Augusta 6925 Ladies' Cheer Squad Skirt.jpg">
+  <img data-name="ATC WeRK1333 Canvas Snapback Trucker Cap" src="pic/cardsproduct/ATC WeRK1333 Canvas Snapback Trucker Cap.jpg">
+  <img data-name="INIVI IV164 Stanley One-Panel Seamless Cap" src="pic/cardsproduct/INIVI IV164 Stanley One-Panel Seamless Cap.jpg">
+  <img data-name="INIVI IV141 Cooper Two-Panel Cap" src="pic/cardsproduct/INIVI IV141 Cooper Two-Panel Cap.jpg">
+  <img data-name="INIVI IV163 Bottlecap Two-Panel Cap" src="pic/cardsproduct/INIVI IV163 Bottlecap Two-Panel Cap.jpg">
+  <img data-name="ATC 110P Flexfit One Ten Snapback Cap" src="pic/cardsproduct/ATC 110P Flexfit One Ten Snapback Cap.jpg">
+  <img data-name="ATC C140 Sandwich Bill Cap" src="pic/cardsproduct/ATC C140 Sandwich Bill Cap.jpg">
+  <img data-name="ATC Y100 Everyday Youth Cuffed Toque" src="pic/cardsproduct/ATC Y100 Everyday Youth Cuffed Toque.jpg">
+  <img data-name="ATC WeRK1207 Fleece-Lined Knit Cuff Beanie" src="pic/cardsproduct/ATC WeRK1207 Fleece-Lined Knit Cuff Beanie.jpg">
+  <img data-name="The North Face NF0A4VUB Mountain Beanie" src="pic/cardsproduct/The North Face NF0A4VUB Mountain Beanie.jpg">
+  <img data-name="ATC C112 Everyday Rib Knit Slouch Beanie" src="pic/cardsproduct/ATC C112 Everyday Rib Knit Slouch Beanie.jpg">
+  <img data-name="ATC C105 Everyday Knit Skull Cap" src="pic/cardsproduct/ATC C105 Everyday Knit Skull Cap.jpg">
+  <img data-name="ATC C1008 Insulated Knit Toque" src="pic/cardsproduct/ATC C1008 Insulated Knit Toque.jpg">
+  <img data-name="ATC C100 Everyday Knit Cuff Toque" src="pic/cardsproduct/ATC C100 Everyday Knit Cuff Toque.jpg">
+  <img data-name="ATC C1321 Pigment-Dyed Cap" src="pic/cardsproduct/ATC C1321 Pigment-Dyed Cap.jpg">
+  <img data-name="INIVI IV160 Enzyme Two-Panel Cap" src="pic/cardsproduct/INIVI IV160 Enzyme Two-Panel Cap.jpg">
+  <img data-name="ATC Yupoong 245CM YP Classics™ Cotton Twill Dad Cap" src="pic/cardsproduct/ATC Yupoong 245CM YP Classics™ Cotton Twill Dad Cap.jpg">
+  <img data-name="ATC Flexfit ATC6006 YP Five-Panel Classic Trucker Cap" src="pic/cardsproduct/ATC Flexfit ATC6006 YP Five-Panel Classic Trucker Cap.jpg">
+  <img data-name="ATC Flexfit ATC6506 YP Five-Panel Retro Trucker Cap" src="pic/cardsproduct/ATC Flexfit ATC6506 YP Five-Panel Retro Trucker Cap.jpg">
+  <img data-name="ATC Flexfit ATC110M One Ten Mesh Back Cap" src="pic/cardsproduct/ATC Flexfit ATC110M One Ten Mesh Back Cap.jpg">
+  <img data-name="ATC Flexfit ATC6606 YP Classics Retro Trucker Cap" src="pic/cardsproduct/ATC Flexfit ATC6606 YP Classics Retro Trucker Cap.jpg">
+  <img data-name="ATC C1343 Everyday Five-Panel Rope Trucker" src="pic/cardsproduct/ATC C1343 Everyday Five-Panel Rope Trucker.jpg">
+  <img data-name="ATC C1342 Everyday Five-Panel Trucker Cap" src="pic/cardsproduct/ATC C1342 Everyday Five-Panel Trucker Cap.jpg">
+  <img data-name="The North Face NF0A4VUA Ultimate Trucker Cap" src="pic/cardsproduct/The North Face NF0A4VUA Ultimate Trucker Cap.jpg">
+  <img data-name="ATC C1322 Pigment-Dyed Trucker Cap" src="pic/cardsproduct/ATC C1322 Pigment-Dyed Trucker Cap.jpg">
+  <img data-name="ATC C1318 Everyday Snapback Trucker Cap" src="pic/cardsproduct/ATC C1318 Everyday Snapback Trucker Cap.jpg">
+  <img data-name="ATC 6533 Flexfit Ultrafibre & Airmesh Cap" src="pic/cardsproduct/ATC 6533 Flexfit Ultrafibre & Airmesh Cap.jpg">
+  <img data-name="Nike 333115 Dri-Fit Swoosh Flex-Sandwich Cap" src="pic/cardsproduct/Nike 333115 Dri-Fit Swoosh Flex-Sandwich Cap.jpg">
+  <img data-name="Nike 779797 Swoosh Legacy 91 Cap" src="pic/cardsproduct/Nike 779797 Swoosh Legacy 91 Cap.jpg">
+  <img data-name="ATC 110F Flexfit One Ten Snapback Cap" src="pic/cardsproduct/ATC 110F Flexfit One Ten Snapback Cap.jpg">
+  <img data-name="ATC 6477 Flexfit Wool Blend Cap" src="pic/cardsproduct/ATC 6477 Flexfit Wool Blend Cap.jpg">
+  <img data-name="ATC C1340 Everyday Five-Panel Cotton Cap" src="pic/cardsproduct/ATC C1340 Everyday Five-Panel Cotton Cap.jpg">
+  <img data-name="ATC 6277 Flexfit Wooly Combed Cap" src="pic/cardsproduct/ATC 6277 Flexfit Wooly Combed Cap.jpg">
+  <img data-name="ATC 6511 Flexfit Trucker Mesh Cap" src="pic/cardsproduct/ATC 6511 Flexfit Trucker Mesh Cap.jpg">
+  <img data-name="Yupoong 6606 Adult Retro Trucker Cap" src="pic/cardsproduct/Yupoong 6606 Adult Retro Trucker Cap.jpg">
+  <img data-name="Yupoong F6606T Retro Trucker Cap Two-Tone" src="pic/cardsproduct/Yupoong F6606T Retro Trucker Cap Two-Tone.jpg">
+  <img data-name="Yupoong 6506 Adult Five-Panel Retro Trucker Cap" src="pic/cardsproduct/Yupoong 6506 Adult Five-Panel Retro Trucker Cap.jpg">
+  <img data-name="Yupoong Y6007 Adult Five-Panel Cotton Twill Snapback Cap" src="pic/cardsproduct/Yupoong Y6007 Adult Five-Panel Cotton Twill Snapback Cap.jpg">
+  <img data-name="YP Classics 6601 Elite Cap" src="pic/cardsproduct/YP Classics 6601 Elite Cap.jpg">
+  <img data-name="Yupoong YP5089 Adult Five-Panel Structured Flat-Visor Classic Snapback Cap" src="pic/cardsproduct/Yupoong YP5089 Adult Five-Panel Structured Flat-Visor Classic Snapback Cap.jpg">
+  <img data-name="Augusta 6227 Athletic Mesh Visor" src="pic/cardsproduct/Augusta 6227 Athletic Mesh Visor.jpg">
+  <img data-name="Tough Duck I155 Hi-Vis Aviator Hat" src="pic/cardsproduct/Tough Duck I155 Hi-Vis Aviator Hat.jpg">
+  <img data-name="Tough Duck I265 Acrylic Fleece-Lined Hi-Vis Balaclava" src="pic/cardsproduct/Tough Duck I265 Acrylic Fleece-Lined Hi-Vis Balaclava.jpg">
+  <img data-name="ATC Y3519 Youth Pro Team Home & Away Jersey" src="pic/cardsproduct/ATC Y3519 Youth Pro Team Home & Away Jersey.jpg">
+  <img data-name="ATC Y3526 Youth Pro Team Baseball Jersey" src="pic/cardsproduct/ATC Y3526 Youth Pro Team Baseball Jersey.jpg">
+  <img data-name="ATC S3526 Pro Team Baseball Jersey" src="pic/cardsproduct/ATC S3526 Pro Team Baseball Jersey.jpg">
+  <img data-name="ATC S3519 Pro Team Home & Away Jersey" src="pic/cardsproduct/ATC S3519 Pro Team Home & Away Jersey.jpg">
+  <img data-name="ATC S350LS Pro Team Long Sleeve" src="pic/cardsproduct/ATC S350LS Pro Team Long Sleeve.jpg">
+  <img data-name="High Five 322970 Sheffield Soccer Jersey" src="pic/cardsproduct/High Five 322970 Sheffield Soccer Jersey.jpg">
+  <img data-name="Augusta 1518 Youth Cutter Jersey" src="pic/cardsproduct/Augusta 1518 Youth Cutter Jersey.jpg">
+  <img data-name="Athletic Knit BA5500 Full-Button Baseball Jerseys - Adult & Youth" src="pic/cardsproduct/Athletic Knit BA5500 Full-Button Baseball Jerseys - Adult & Youth.jpg">
+  <img data-name="Athletic Knit T101 Track Jersey - Men, Ladies & Youth" src="pic/cardsproduct/Athletic Knit T101 Track Jersey - Men, Ladies & Youth.jpg">
+  <img data-name="Augusta 9012 Ladies' V-Neck Liner" src="pic/cardsproduct/Augusta 9012 Ladies' V-Neck Liner.jpg">
+  <img data-name="Athletic Knit BA601L Ladies' Baseball Jersey" src="pic/cardsproduct/Athletic Knit BA601L Ladies' Baseball Jersey.jpg">
+  <img data-name="Augusta 1655 Full-Button Baseball Jersey" src="pic/cardsproduct/Augusta 1655 Full-Button Baseball Jersey.jpg">
+  <img data-name="Athletic Knit BA524 Adult Full-Button Baseball Jersey" src="pic/cardsproduct/Athletic Knit BA524 Adult Full-Button Baseball Jersey.jpg">
+  <img data-name="Alleson Athletic 52MBBJ Diamond Full-Button Baseball Jersey" src="pic/cardsproduct/Alleson Athletic 52MBBJ Diamond Full-Button Baseball Jersey.jpg">
+  <img data-name="Athletic Knit B1710 Pro Basketball Jerseys - Adult & Youth" src="pic/cardsproduct/Athletic Knit B1710 Pro Basketball Jerseys - Adult & Youth.jpg">
+  <img data-name="Athletic Knit B1715 Pro Basketball Jerseys - Adult & Youth" src="pic/cardsproduct/Athletic Knit B1715 Pro Basketball Jerseys - Adult & Youth.jpg">
+  <img data-name="Augusta 148 Reversible Wicking Jersey" src="pic/cardsproduct/Augusta 148 Reversible Wicking Jersey.jpg">
+  <img data-name="Athletic Knit B2115 Pro Basketball Jerseys - Men & Junior" src="pic/cardsproduct/Athletic Knit B2115 Pro Basketball Jerseys - Men & Junior.jpg">
+  <img data-name="Augusta 6020 Game Socks" src="pic/cardsproduct/Augusta 6020 Game Socks.jpg">
+  <img data-name="Augusta 147 Ladies' Reversible Wicking Jersey" src="pic/cardsproduct/Augusta 147 Ladies' Reversible Wicking Jersey.jpg">
+  <img data-name="Augusta 265 Youth Reversible Flag Football Jersey" src="pic/cardsproduct/Augusta 265 Youth Reversible Flag Football Jersey.jpg">
+  <img data-name="Alleson Athletic A51000 Retro Basketball Jersey" src="pic/cardsproduct/Alleson Athletic A51000 Retro Basketball Jersey.jpg">
+  <img data-name="Augusta 1355 Ladies' Tornado Jersey" src="pic/cardsproduct/Augusta 1355 Ladies' Tornado Jersey.jpg">
+  <img data-name="Augusta 149 Youth Reversible Wicking Jersey" src="pic/cardsproduct/Augusta 149 Youth Reversible Wicking Jersey.jpg">
+  <img data-name="Augusta 1523 Girls' Cutter Jersey" src="pic/cardsproduct/Augusta 1523 Girls' Cutter Jersey.jpg">
+  <img data-name="Augusta 163 Ladies' Tricot Mesh Reversible 2.0 Jersey" src="pic/cardsproduct/Augusta 163 Ladies' Tricot Mesh Reversible 2.0 Jersey.jpg">
+  <img data-name="Augusta 6924 Girls' Cheer Squad Shell" src="pic/cardsproduct/Augusta 6924 Girls' Cheer Squad Shell.jpg">
+  <img data-name="Tough Duck SJ28 Ripstop Safety Hi-Vis Shell" src="pic/cardsproduct/Tough Duck SJ28 Ripstop Safety Hi-Vis Shell.jpg">
+  <img data-name="Tough Duck G794 Thinsulate-Lined Leather Hi-Vis Fitter Glove" src="pic/cardsproduct/Tough Duck G794 Thinsulate-Lined Leather Hi-Vis Fitter Glove.jpg">
+  <img data-name="ATC A100 Everyday Full-Length Apron with Soil Release" src="pic/cardsproduct/ATC A100 Everyday Full-Length Apron with Soil Release.jpg">
+  <img data-name="ATC A101 Everyday Waist Apron with Soil Release" src="pic/cardsproduct/ATC A101 Everyday Waist Apron with Soil Release.jpg">
+  <img data-name="Red Kap 046X Short-Sleeve Chef Coat with MIMIX & OILBLOK" src="pic/cardsproduct/Red Kap 046X Short-Sleeve Chef Coat with MIMIX & OILBLOK.jpg">
+  <img data-name="Biz Collection BA75 Salt Apron" src="pic/cardsproduct/Biz Collection BA75 Salt Apron.jpg">
+  <img data-name="Biz Collection BA95 Bib Apron" src="pic/cardsproduct/Biz Collection BA95 Bib Apron.jpg">
+  <img data-name="Biz Collection BA55 Urban Bib Apron" src="pic/cardsproduct/Biz Collection BA55 Urban Bib Apron.jpg">
+  <img data-name="Artisan Collection by Reprime RP123 Espresso Bib Apron" src="pic/cardsproduct/Artisan Collection by Reprime RP123 Espresso Bib Apron.jpg">
+  <img data-name="Artisan Collection by Reprime RP149 Youth Recycled Apron" src="pic/cardsproduct/Artisan Collection by Reprime RP149 Youth Recycled Apron.jpg">
+  <img data-name="Artisan Collection by Reprime RP664 Unisex Studded-Front Short-Sleeve Chef Jacket" src="pic/cardsproduct/Artisan Collection by Reprime RP664 Unisex Studded-Front Short-Sleeve Chef Jacket.jpg">
+  <img data-name="OTTO 804-401 One-Pocket Full-Length Bistro Apron" src="pic/cardsproduct/OTTO 804-401 One-Pocket Full-Length Bistro Apron.jpg">
+  <img data-name="Q-Tees Q2115 Waist Apron with Pockets" src="pic/cardsproduct/Q-Tees Q2115 Waist Apron with Pockets.jpg">
+  <img data-name="Canada Sportswear L9209B Cotton Chef's Apron" src="pic/cardsproduct/Canada Sportswear L9209B Cotton Chef's Apron.jpg">
+  <img data-name="BELLA+CANVAS 3001T Toddler Jersey Short-Sleeve T-Shirt" src="pic/cardsproduct/BELLA+CANVAS 3001T Toddler Jersey Short-Sleeve T-Shirt.jpg">
+  <img data-name="Rabbit Skins 3322 Infant Fine Jersey Tee" src="pic/cardsproduct/Rabbit Skins 3322 Infant Fine Jersey Tee.jpg">
+  <img data-name="Rabbit Skins 3326 Toddler Pullover Fleece Hoodie" src="pic/cardsproduct/Rabbit Skins 3326 Toddler Pullover Fleece Hoodie.jpg">
+  <img data-name="Rabbit Skins 4421 Infant Fine Jersey Long-Sleeve Bodysuit" src="pic/cardsproduct/Rabbit Skins 4421 Infant Fine Jersey Long-Sleeve Bodysuit.jpg">
+  <img data-name="Rabbit Skins 4424EX Infant Fine Jersey Bodysuit - Extended Colours" src="pic/cardsproduct/Rabbit Skins 4424EX Infant Fine Jersey Bodysuit - Extended Colours.jpg">
+  <img data-name="Rabbit Skins 5330RS Infant Fine Jersey Dress" src="pic/cardsproduct/Rabbit Skins 5330RS Infant Fine Jersey Dress.jpg">
+  <img data-name="Rabbit Skins RS3301 Toddler Cotton Jersey T-Shirt" src="pic/cardsproduct/Rabbit Skins RS3301 Toddler Cotton Jersey T-Shirt.jpg">
+  <img data-name="ATC B110 Everyday Essential Tote" src="pic/cardsproduct/ATC B110 Everyday Essential Tote.jpg">
+  <img data-name="KOI KOI1805 Matte Carryall Large Tote Bag" src="pic/cardsproduct/KOI KOI1805 Matte Carryall Large Tote Bag.jpg">
+</div>
+
+
+      <div class="store-empty" id="storeEmpty" style="display:none">
+        No products match this filter yet — try clearing the search or picking a different category.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta-band" id="builder-cta">
+        <div>
+          <h2>Don't See The Exact Blank You Need?</h2>
+          <p>We work with two major suppliers and can source almost any garment. Tell us the product and quantity and we'll quote it.</p>
+        </div>
+        <div class="cta-btns">
+          <a href="gangsheet.html" class="btn btn-primary">Start A Custom Order</a>
+          <a href="tel:5877780189" class="btn btn-outline">Call Our Shop</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">CRAFTOPIA<span style="color:var(--lime)">.</span></div>
+        <p>Edmonton's custom apparel studio for T-shirt printing, embroidery, DTF printing, business uniforms, branded workwear, safety apparel, hoodies, hats and promotional clothing.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="index.html#services">Custom T-Shirt Printing</a>
+        <a href="index.html#services">Embroidery</a>
+        <a href="index.html#services">DTF Printing</a>
+        <a href="index.html#services">Company Uniforms</a>
+        <a href="index.html#services">Safety Vest Printing</a>
+      </div>
+      <div>
+        <h5>Areas We Serve</h5>
+        <a href="#">Edmonton</a>
+        <a href="#">Sherwood Park</a>
+        <a href="#">St. Albert</a>
+        <a href="#">Leduc</a>
+        <a href="#">Spruce Grove</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p>14827 123 Ave NW<br>Edmonton, Alberta</p>
+        <p>587-778-0189</p>
+        <p>craftopiacustoms5@gmail.com</p>
+        <p>Instagram: @craftopia.customs</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Craftopia Customs. All rights reserved.</span>
+      <span>Where Creativity Comes to Life Through Custom Apparel.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-bg" id="authModalBg">
+<div class="modal auth-modal">
+    <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Sign In</button>
+        <button class="auth-tab" data-tab="signup">Sign Up</button>
+        <button class="auth-modal-close" id="authModalClose">&times;</button>
+    </div>
+    <div class="auth-scroll">
+        <form id="loginForm" class="auth-form active">
+            <h2>Welcome Back </h2>
+            <p class="auth-subtitle">Sign in to continue</p>
+            <p class="auth-error" id="loginError"></p>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <div class="password-box">
+                <input type="password" name="password" placeholder="Password" id="loginPassword" required>
+                <button type="button" class="toggle-password" data-target="loginPassword"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <div class="auth-options">
+                <label class="remember"><input type="checkbox" name="remember"><span>Remember Me</span></label>
+                <a href="form.html">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-lime btn-block">Sign In</button>
+            <p class="switch-text">Don't have an account? <a href="#" class="switch-link" data-tab="signup">Sign Up</a></p>
+        </form>
+
+        <form id="signupForm" class="auth-form">
+            <h2>Create Account</h2>
+            <p class="auth-subtitle">Create your free account</p>
+            <p class="auth-error" id="signupError"></p>
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <div class="password-box">
+                <input type="password" name="password" placeholder="Password" id="signupPassword" required>
+                <button type="button" class="toggle-password" data-target="signupPassword"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <div class="password-box">
+                <input type="password" name="confirm_password" placeholder="Confirm Password" id="signupConfirmPassword" required>
+                <button type="button" class="toggle-password" data-target="signupConfirmPassword"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <label class="terms"><input type="checkbox" required><span>I agree to the <a href="#">Terms & Conditions</a></span></label>
+            <button type="submit" class="btn btn-lime btn-block">Create Account</button>
+            <p class="switch-text">Already have an account? <a href="#" class="switch-link" data-tab="login">Sign In</a></p>
+        </form>
+    </div>
+</div>
+</div>
+
+<script src="js/products-data.js"></script>
+<script src="js/script.js"></script>
+<script src="js/store.js"></script>
+</body>
+</html>
