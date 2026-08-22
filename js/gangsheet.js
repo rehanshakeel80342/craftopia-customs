@@ -243,24 +243,23 @@ function renderMiniPreview(){
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   images.forEach(img=>{
-    const im = new Image();
-    im.onload = () => {
-      const turns = img.quarterTurns || 0;
-      const rotated = turns % 2 === 1;
-      const drawW = (rotated ? img.h : img.w) * scale;
-      const drawH = (rotated ? img.w : img.h) * scale;
-      const cx = (img.x + img.w/2 - minX) * scale;
-      const cy = (img.y + img.h/2 - minY) * scale;
+  const im = img._cachedImg;
+  if(!im || !im.complete) return;
 
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(turns * 90 * Math.PI / 180);
-      ctx.scale(img.flipH ? -1 : 1, img.flipV ? -1 : 1);
-      ctx.drawImage(im, -drawW/2, -drawH/2, drawW, drawH);
-      ctx.restore();
-    };
-    im.src = img.img || img.url;
-  });
+  const turns = img.quarterTurns || 0;
+  const rotated = turns % 2 === 1;
+  const drawW = (rotated ? img.h : img.w) * scale;
+  const drawH = (rotated ? img.w : img.h) * scale;
+  const cx = (img.x + img.w/2 - minX) * scale;
+  const cy = (img.y + img.h/2 - minY) * scale;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(turns * 90 * Math.PI / 180);
+  ctx.scale(img.flipH ? -1 : 1, img.flipV ? -1 : 1);
+  ctx.drawImage(im, -drawW/2, -drawH/2, drawW, drawH);
+  ctx.restore();
+});
 }
 
 function recomputeLength(){
@@ -374,16 +373,17 @@ function handleFiles(fileList){
       if(h>SHEET_WIDTH_IN){ h=SHEET_WIDTH_IN; w=h*aspect; }
       const id = idSeq++;
       const spot = findFreeSpot(w, h);
-      images.push({
-        id, url, originalUrl:url, img:url,
-        name:file.name.replace(/\.[^.]+$/,''),
-        w, h, x:spot.x, y:spot.y,
-        natW: im.width, natH: im.height, // for DPI calc
-        bgRemoved:false,
-        quarterTurns:0, flipH:false, flipV:false, // rotation state
-        groupId: id, // NEW: "quantity" groups every copy of the same design under one id
-      qty: 1  
-    });
+   images.push({
+  id, url, originalUrl:url, img:url,
+  name:file.name.replace(/\.[^.]+$/,''),
+  w, h, x:spot.x, y:spot.y,
+  natW: im.width, natH: im.height,
+  bgRemoved:false,
+  quarterTurns:0, flipH:false, flipV:false,
+  groupId: id,
+  qty: 1,
+  _cachedImg: im
+});
       selectedId = id;
       recomputeLength();
       renderSheet();
@@ -781,8 +781,10 @@ const thresh = tolerance * 1.3; // slider 0-100 -> distance threshold (lowered s
 
     ctx.putImageData(imageData, 0, 0);
     imgObj.img = c.toDataURL('image/png');
+    const newIm = new Image();
+    newIm.onload = () => { imgObj._cachedImg = newIm; renderSheet(); };
+    newIm.src = imgObj.img;
     if(statusEl) statusEl.textContent = '';
-    renderSheet();
     onDone && onDone();
   };
   im.src = imgObj.originalUrl;
@@ -1040,8 +1042,17 @@ document.getElementById("modalClose").onclick = () => {
     modalBg.classList.remove("open");
 };
 
-renderSheet();
-
+function autoFitZoomMobile(){
+  if(window.innerWidth > 700) return;
+  const stage = document.querySelector('.stage-wrap');
+  if(!stage) return;
+  const available = stage.clientWidth - 40;
+  const fitZoom = available / (SHEET_WIDTH_IN * PX_PER_IN);
+  zoom = Math.max(0.35, Math.min(1, fitZoom));
+  const zl = document.getElementById('zoomLabel');
+  if(zl) zl.textContent = Math.round(zoom*100)+'%';
+}
+autoFitZoomMobile();
 renderSheet();
 
 
