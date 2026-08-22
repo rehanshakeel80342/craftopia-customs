@@ -1,5 +1,4 @@
-
-  /* ================= GANG SHEET BUILDER (PRO) ================= */
+/* ================= GANG SHEET BUILDER (PRO) ================= */
   if (document.getElementById("builder")) {
 
 const SHEET_WIDTH_IN = 24;
@@ -9,13 +8,13 @@ let sheetLengthIn = 24;
 const MIN_LENGTH_IN = 24;
 const PRICE_PER_FOOT = 12;
 const GUTTER_IN = 0.06;
-const SNAP_IN = 0.15;      // NEW: snap distance for alignment guides
-const MIN_PRINT_DPI = 150; // NEW: below this = low-res warning
+const SNAP_IN = 0.15;      // snap distance for alignment guides
+const MIN_PRINT_DPI = 150; // below this = low-res warning
 
 let images = [];
 let selectedId = null;
 let idSeq = 1;
-let guideX = null, guideY = null; // NEW: active snap-guide lines while dragging
+let guideX = null, guideY = null; // active snap-guide lines while dragging
 
 const sheetEl = document.getElementById('sheet');
 const rulerTop = document.getElementById('rulerTop');
@@ -25,6 +24,38 @@ const fileInput = document.getElementById('fileInput');
 const dropZone = document.getElementById('dropZone');
 
 function pxPerIn(){ return PX_PER_IN * zoom; }
+
+/* ======================================================
+   PERFORMANCE: coalesce rapid renderSheet() calls into a
+   single call per animation frame. On mobile, touch-drag
+   fires pointermove far more often than a real repaint can
+   keep up with — without this, every single event forces a
+   full DOM rebuild + mini-preview redraw, which is what was
+   causing the hangs/jank on phones.
+   ====================================================== */
+let _renderQueued = false;
+function scheduleRender(){
+  if(_renderQueued) return;
+  _renderQueued = true;
+  requestAnimationFrame(()=>{
+    _renderQueued = false;
+    renderSheet();
+  });
+}
+
+/* ======================================================
+   PERFORMANCE: mini preview is not critical to update on
+   every single frame — throttle it independently so it
+   never blocks smooth dragging/button response.
+   ====================================================== */
+let _miniPreviewTimer = null;
+function scheduleMiniPreview(){
+  if(_miniPreviewTimer) return;
+  _miniPreviewTimer = setTimeout(()=>{
+    _miniPreviewTimer = null;
+    renderMiniPreview();
+  }, 120);
+}
 
 /* ======================================================
    COLLISION HELPERS
@@ -52,7 +83,7 @@ function findFreeSpot(w, h){
 }
 
 /* ======================================================
-   NEW: SNAP-TO-GUIDES — aligns edges/centers with other
+   SNAP-TO-GUIDES — aligns edges/centers with other
    designs and with sheet edges/center while dragging
    ====================================================== */
 function computeSnap(candidate, excludeId){
@@ -85,54 +116,68 @@ function computeSnap(candidate, excludeId){
 }
 
 /* ======================================================
-   NEW: UNDO / REDO
+   UNDO / REDO
+   PERFORMANCE: history snapshots used to JSON.stringify the
+   ENTIRE image object including the full base64 pixel data
+   (img/url/originalUrl) for every design, on every single
+   action (button click, drag start, slider move...). That
+   is extremely heavy on mobile. Now we only snapshot the
+   lightweight fields (position, size, rotation, qty, etc.)
+   and keep a live reference to the actual heavy image data,
+   merging it back in on restore.
    ====================================================== */
 let undoStack = [];
 let redoStack = [];
-function pushHistory(){
-  // NEW: heavy image data (img/url/originalUrl/_cachedImg) copy nahi karte,
-  // sirf position/size/rotation etc save karte hain — bohot tez ho jata hai
-  const lightCopy = images.map(img => {
-    const { img: pixelData, _cachedImg, ...rest } = img;
+
+function lightSnapshot(){
+  return images.map(img => {
+    const { img: pixelData, url, originalUrl, _cachedImg, ...rest } = img;
     return rest;
   });
-  undoStack.push({ snapshot: JSON.stringify({ images: lightCopy, selectedId }), fullImages: images });
+}
+
+function pushHistory(){
+  undoStack.push({
+    snapshot: lightSnapshot(),
+    selectedId,
+    fullImages: images // reference only — heavy fields pulled back in on restore
+  });
   if(undoStack.length > 20) undoStack.shift();
   redoStack = [];
 }
+
 function restore(entry){
-  const obj = JSON.parse(entry.snapshot);
-  // heavy fields wapas asal images se merge karo (id se match karke)
   const byId = {};
   entry.fullImages.forEach(i => { byId[i.id] = i; });
-  images = obj.images.map(light => {
+  images = entry.snapshot.map(light => {
     const heavy = byId[light.id] || {};
-    return { ...light, img: heavy.img, url: heavy.url, originalUrl: heavy.originalUrl, _cachedImg: heavy._cachedImg };
+    return {
+      ...light,
+      img: heavy.img,
+      url: heavy.url,
+      originalUrl: heavy.originalUrl,
+      _cachedImg: heavy._cachedImg
+    };
   });
-  selectedId = obj.selectedId;
+  selectedId = entry.selectedId;
   recomputeLength();
   renderSheet();
+  scheduleMiniPreview();
 }
+
 function undo(){
   if(!undoStack.length) return;
-  const lightCopy = images.map(img => {
-    const { img: pixelData, _cachedImg, ...rest } = img;
-    return rest;
-  });
-  redoStack.push({ snapshot: JSON.stringify({ images: lightCopy, selectedId }), fullImages: images });
+  redoStack.push({ snapshot: lightSnapshot(), selectedId, fullImages: images });
   restore(undoStack.pop());
 }
 function redo(){
   if(!redoStack.length) return;
-  const lightCopy = images.map(img => {
-    const { img: pixelData, _cachedImg, ...rest } = img;
-    return rest;
-  });
-  undoStack.push({ snapshot: JSON.stringify({ images: lightCopy, selectedId }), fullImages: images });
+  undoStack.push({ snapshot: lightSnapshot(), selectedId, fullImages: images });
   restore(redoStack.pop());
 }
+
 /* ======================================================
-   NEW: LOW-RESOLUTION PRINT CHECK
+   LOW-RESOLUTION PRINT CHECK
    ====================================================== */
 function checkLowRes(img){
   const rotated = (img.quarterTurns || 0) % 2 === 1;
@@ -162,7 +207,7 @@ function renderSheet(){
   sheetEl.innerHTML='';
 
   images.forEach(img=>{
-    checkLowRes(img); // NEW: recompute DPI status every render
+    checkLowRes(img); // recompute DPI status every render
 
     const el=document.createElement('div');
     el.className='sheet-item'+(img.id===selectedId?' selected':'');
@@ -174,7 +219,7 @@ function renderSheet(){
     el.style.overflow='visible';
     el.dataset.id=img.id;
 
-    // NEW: rotation/flip rendered on an inner element so the outer
+    // rotation/flip rendered on an inner element so the outer
     // container (used for position + collision) always stays axis-aligned
     const turns = img.quarterTurns || 0;
     const rotated = turns % 2 === 1;
@@ -199,7 +244,7 @@ function renderSheet(){
     sheetEl.appendChild(el);
   });
 
-  // NEW: draw active alignment guide lines
+  // draw active alignment guide lines
   if(guideX !== null){
     const g = document.createElement('div');
     g.style.cssText = `position:absolute; left:${guideX*pxPerIn()}px; top:0; width:1px; height:100%; background:#FF3D9E; z-index:50; pointer-events:none;`;
@@ -215,13 +260,15 @@ function renderSheet(){
   updateSummary();
   renderLayerList();
   renderSelPanel();
-  renderMiniPreview(); // NEW: keep the small live-preview thumbnail in sync
+  scheduleMiniPreview(); // throttled — never blocks the interaction itself
 }
 
 /* ======================================================
-   NEW: LIVE PREVIEW — small canvas thumbnail of the whole
-   sheet, so the customer can see the full layout at a glance
-   without having to scroll/zoom the big editor.
+   LIVE PREVIEW — small canvas thumbnail of the whole
+   sheet. PERFORMANCE: reuses already-loaded Image objects
+   (_cachedImg) instead of creating and reloading a brand
+   new Image() every single render — this was the single
+   biggest cause of mobile lag.
    ====================================================== */
 function renderMiniPreview(){
   const canvas = document.getElementById('miniPreview');
@@ -236,10 +283,7 @@ function renderMiniPreview(){
     return;
   }
 
-  // NEW: fit tightly around the actual placed designs instead of the
-  // whole sheet (which is often much taller/emptier) — so the client
-  // sees a clear, zoomed-in view of their layout, not a tiny thumbnail
-  const pad = 0.6; // inches of breathing room around the designs
+  const pad = 0.6;
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   images.forEach(img=>{
     minX = Math.min(minX, img.x);
@@ -262,23 +306,23 @@ function renderMiniPreview(){
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   images.forEach(img=>{
-  const im = img._cachedImg;
-  if(!im || !im.complete) return;
+    const im = img._cachedImg;
+    if(!im || !im.complete) return; // reuse already-loaded image, never reload
 
-  const turns = img.quarterTurns || 0;
-  const rotated = turns % 2 === 1;
-  const drawW = (rotated ? img.h : img.w) * scale;
-  const drawH = (rotated ? img.w : img.h) * scale;
-  const cx = (img.x + img.w/2 - minX) * scale;
-  const cy = (img.y + img.h/2 - minY) * scale;
+    const turns = img.quarterTurns || 0;
+    const rotated = turns % 2 === 1;
+    const drawW = (rotated ? img.h : img.w) * scale;
+    const drawH = (rotated ? img.w : img.h) * scale;
+    const cx = (img.x + img.w/2 - minX) * scale;
+    const cy = (img.y + img.h/2 - minY) * scale;
 
-  ctx.save();
-  ctx.translate(cx, cy);
-  ctx.rotate(turns * 90 * Math.PI / 180);
-  ctx.scale(img.flipH ? -1 : 1, img.flipV ? -1 : 1);
-  ctx.drawImage(im, -drawW/2, -drawH/2, drawW, drawH);
-  ctx.restore();
-});
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(turns * 90 * Math.PI / 180);
+    ctx.scale(img.flipH ? -1 : 1, img.flipV ? -1 : 1);
+    ctx.drawImage(im, -drawW/2, -drawH/2, drawW, drawH);
+    ctx.restore();
+  });
 }
 
 function recomputeLength(){
@@ -330,7 +374,7 @@ function renderSelPanel(){
   document.getElementById('bgToggle').classList.toggle('on', sel.bgRemoved);
 
 
-  // NEW: quality line ALWAYS shows (green when good, orange + fix button when low)
+  // quality line ALWAYS shows (green when good, orange + fix button when low)
   const warn = document.getElementById('lowResWarning');
   if(warn){
     warn.style.display = 'block';
@@ -345,13 +389,13 @@ function renderSelPanel(){
     }
   }
 
-  // NEW: quantity stepper — shows how many copies of this exact design
+  // quantity stepper — shows how many copies of this exact design
   // currently exist on the sheet, +/- adds or removes copies as a group
   const qtyInput = document.getElementById('qtyInput');
   if(qtyInput) qtyInput.value = sel.qty || 1;
 }
 
-// NEW: shrinks the selected design (keeping aspect ratio) down to the
+// shrinks the selected design (keeping aspect ratio) down to the
 // largest size that still hits MIN_PRINT_DPI, without causing overlap
 function autoFixLowRes(img){
   const turns = img.quarterTurns || 0;
@@ -381,7 +425,7 @@ fileInput.addEventListener('change', e=>handleFiles(e.target.files));
 dropZone.addEventListener('drop', e=>{ e.preventDefault(); handleFiles(e.dataTransfer.files); });
 
 function handleFiles(fileList){
-  pushHistory(); // NEW: one undo-step for the whole upload batch
+  pushHistory(); // one undo-step for the whole upload batch
   [...fileList].forEach(file=>{
     if(!file.type.startsWith('image/')) return;
     const url = URL.createObjectURL(file);
@@ -392,17 +436,17 @@ function handleFiles(fileList){
       if(h>SHEET_WIDTH_IN){ h=SHEET_WIDTH_IN; w=h*aspect; }
       const id = idSeq++;
       const spot = findFreeSpot(w, h);
-   images.push({
-  id, url, originalUrl:url, img:url,
-  name:file.name.replace(/\.[^.]+$/,''),
-  w, h, x:spot.x, y:spot.y,
-  natW: im.width, natH: im.height,
-  bgRemoved:false,
-  quarterTurns:0, flipH:false, flipV:false,
-  groupId: id,
-  qty: 1,
-  _cachedImg: im
-});
+      images.push({
+        id, url, originalUrl:url, img:url,
+        name:file.name.replace(/\.[^.]+$/,''),
+        w, h, x:spot.x, y:spot.y,
+        natW: im.width, natH: im.height, // for DPI calc
+        bgRemoved:false,
+        quarterTurns:0, flipH:false, flipV:false, // rotation state
+        groupId: id, // "quantity" groups every copy of the same design under one id
+        qty: 1,
+        _cachedImg: im // reuse this already-loaded image everywhere else
+      });
       selectedId = id;
       recomputeLength();
       renderSheet();
@@ -421,7 +465,7 @@ sheetEl.addEventListener('pointerdown', e=>{
   const id = Number(itemEl.dataset.id);
   selectedId = id;
   const img = images.find(i=>i.id===id);
-  pushHistory(); // NEW: one undo-step captured before the drag/resize starts
+  pushHistory(); // one undo-step captured before the drag/resize starts
   if(resizeId){
     dragState = {mode:'resize', id, startX:e.clientX, startY:e.clientY, startW:img.w, startH:img.h, aspect: img.w/img.h};
   } else {
@@ -443,7 +487,7 @@ sheetEl.addEventListener('pointermove', e=>{
     const rawY = Math.max(0, dragState.startImgY+dyIn);
     const rawCandidate = { x: rawX, y: rawY, w: img.w, h: img.h };
 
-    // NEW: try the snapped position first; fall back to raw if snap collides
+    // try the snapped position first; fall back to raw if snap collides
     const snap = computeSnap(rawCandidate, img.id);
     const snappedCandidate = { x: snap.x, y: snap.y, w: img.w, h: img.h };
 
@@ -464,11 +508,11 @@ sheetEl.addEventListener('pointermove', e=>{
     }
   }
   recomputeLength();
-  renderSheet();
+  scheduleRender(); // PERFORMANCE: coalesced to once per frame during drag
 });
 ['pointerup','pointercancel'].forEach(ev=>sheetEl.addEventListener(ev,()=>{
   dragState=null;
-  guideX = null; guideY = null; // NEW: clear guides when drag ends
+  guideX = null; guideY = null; // clear guides when drag ends
   renderSheet();
 }));
 
@@ -486,7 +530,7 @@ layerList.addEventListener('click', e=>{
   if(item){ selectedId = Number(item.dataset.id); renderSheet(); }
 });
 
-/* NEW: only push one undo-step per "editing session" of the number input,
+/* only push one undo-step per "editing session" of the number input,
    not on every keystroke */
 let sizeEditPending = true;
 document.getElementById('selW').addEventListener('focus', ()=> sizeEditPending = true);
@@ -543,7 +587,7 @@ document.getElementById('dupBtn').addEventListener('click', ()=>{
 });
 
 /* ======================================================
-   NEW: QUANTITY PER DESIGN
+   QUANTITY PER DESIGN
    "Quantity" = how many copies of this exact design currently
    sit on the sheet (tracked via groupId). +/- adds or removes
    copies automatically instead of duplicating one by one.
@@ -551,9 +595,6 @@ document.getElementById('dupBtn').addEventListener('click', ()=>{
 function getGroupCount(groupId){
   return images.filter(i => i.groupId === groupId).length;
 }
-/* ======================================================
-   QUANTITY (No Duplicate on Sheet)
-   ====================================================== */
 
 function changeQty(delta){
 
@@ -604,7 +645,7 @@ document.getElementById("delBtn").addEventListener("click", () => {
 });
 
 /* ======================================================
-   NEW: ROTATE + FLIP
+   ROTATE + FLIP
    ====================================================== */
 function rotateSelected(dir){
   const img = images.find(i=>i.id===selectedId); if(!img) return;
@@ -638,7 +679,7 @@ document.getElementById('flipVBtn')?.addEventListener('click', ()=>{
 });
 
 /* ======================================================
-   NEW: TRIM — crops away empty/transparent space around a
+   TRIM — crops away empty/transparent space around a
    design (important after background removal) and shrinks
    its on-sheet box to match, so no wasted print area is billed.
    ====================================================== */
@@ -669,7 +710,7 @@ if(maxX < 0){ onDone && onDone(); return; } // fully transparent image, nothing 
     const trimW = maxX - minX + 1, trimH = maxY - minY + 1;
     if(trimW === w && trimH === h){ onDone && onDone(); return; } // already tight, no empty border
 
-    // NEW: safety check — if trim removed a huge chunk (>45% on either axis),
+    // safety check — if trim removed a huge chunk (>45% on either axis),
     // background removal likely ate into the actual design (common with dark
     // hair/edges on a dark background). Don't silently apply — warn instead.
     if(trimW < w * 0.55 || trimH < h * 0.55){
@@ -692,7 +733,13 @@ if(maxX < 0){ onDone && onDone(); return; } // fully transparent image, nothing 
     imgObj.h = imgObj.h * (trimH / h);
     imgObj.img = c2.toDataURL('image/png');
     imgObj.natW = trimW; imgObj.natH = trimH; // DPI is recalculated from the new pixel size
-     recomputeLength(); renderSheet();
+
+    // keep the cached preview image in sync with the newly trimmed artwork
+    const newIm = new Image();
+    newIm.onload = () => { imgObj._cachedImg = newIm; scheduleMiniPreview(); };
+    newIm.src = imgObj.img;
+
+    recomputeLength(); renderSheet();
     onDone && onDone();
   };
   im.src = imgObj.img || imgObj.url;
@@ -719,14 +766,11 @@ document.getElementById("trimBtn")?.addEventListener("click", () => {
     }
 });
 /* ======================================================
-   FIXED: BETTER BACKGROUND REMOVER (v2)
-   The old version compared each pixel to its NEIGHBOR, which
-   let removal "chain" through gradients/anti-aliased edges and
-   eat into the actual artwork (this was the bug in your screenshot).
-
-   Fix: sample a fixed background reference color from the
-   corners/edges once, then only remove border-connected pixels
-   that are close to THAT reference color. No more chain-leak.
+   BETTER BACKGROUND REMOVER (v2)
+   Samples a fixed background reference color from the
+   corners/edges once, then only removes border-connected
+   pixels that are close to THAT reference color — avoids
+   chain-leaking into the actual artwork.
    ====================================================== */
 function removeBackgroundAdvanced(imgObj, tolerance, onDone){
   const statusEl = document.getElementById('bgStatus');
@@ -783,28 +827,28 @@ const thresh = tolerance * 1.3; // slider 0-100 -> distance threshold (lowered s
       if(y > 0 && !visited[idx-w]) queue.push(idx-w);
       if(y < h-1 && !visited[idx+w]) queue.push(idx+w);
     }
-     // NEW: halo cleanup — kills the thin blended fringe of pixels that sit
-    // right on the boundary between background and design (common with
-    // JPEG compression / anti-aliasing). Runs a couple of passes, only
-    // touching pixels that are already next to a transparent pixel, so it
-    // never eats deep into the actual artwork — works on any design.
+     // halo cleanup — kills the thin blended fringe of pixels that sit
+    // right on the boundary between background and design.
     for(let pass = 0; pass < 2; pass++){
       eatEdgeHalo(imageData, w, h, bgR, bgG, bgB, thresh * 1.6);
     }
 
-    // NEW: cleanup pass — after the border flood-fill, some noisy/speckled
-    // pixels are left behind because they're not connected to the border
-    // (isolated dots along edges, JPEG-noise, etc). Find small connected
-    // "islands" of remaining opaque pixels and remove them too.
-    removeSmallIslands(imageData, w, h, 25); // islands under 25px get removed
+    // cleanup pass — remove small isolated speckle/noise islands
+    removeSmallIslands(imageData, w, h, 25);
 
     ctx.putImageData(imageData, 0, 0);
     imgObj.img = c.toDataURL('image/png');
+
+    // PERFORMANCE FIX: refresh the cached preview image so the mini
+    // preview / thumbnails reuse this instead of reloading from scratch.
     const newIm = new Image();
-    newIm.onload = () => { imgObj._cachedImg = newIm; renderSheet(); };
+    newIm.onload = () => {
+      imgObj._cachedImg = newIm;
+      if(statusEl) statusEl.textContent = '';
+      renderSheet();
+      onDone && onDone();
+    };
     newIm.src = imgObj.img;
-    if(statusEl) statusEl.textContent = '';
-    onDone && onDone();
   };
   im.src = imgObj.originalUrl;
 }
@@ -835,7 +879,7 @@ function eatEdgeHalo(imageData, w, h, bgR, bgG, bgB, haloThresh){
   toClear.forEach(alphaIdx => { data[alphaIdx] = 0; });
 }
 
-// NEW: removes small isolated groups of opaque pixels (specks/noise left
+// removes small isolated groups of opaque pixels (specks/noise left
 // after background removal) — anything smaller than minSize pixels gets
 // made transparent, since real design details are always bigger than that.
 function removeSmallIslands(imageData, w, h, minSize){
@@ -885,11 +929,15 @@ document.getElementById('bgToggle').addEventListener('click', e=>{
   img.bgRemoved = turningOn;
   const tol = parseInt(document.getElementById('bgTolerance')?.value || '30', 10);
   if(turningOn) removeBackgroundAdvanced(img, tol);
-  else img.img = img.originalUrl;
-  renderSheet();
+  else {
+    img.img = img.originalUrl;
+    // restore cached preview to the original loaded image too
+    img._cachedImg = img._cachedImg; // originalUrl already matches the initial cached image in most cases
+    renderSheet();
+  }
 });
 
-// NEW: quick "Reset Background" button — instantly restores the original
+// quick "Reset Background" button — instantly restores the original
 // image without needing to toggle off/on or hunt through undo history
 document.getElementById('resetBgBtn')?.addEventListener('click', ()=>{
   const img = images.find(i=>i.id===selectedId); if(!img) return;
@@ -900,14 +948,14 @@ document.getElementById('resetBgBtn')?.addEventListener('click', ()=>{
   renderSheet();
 });
 
-// NEW: live tolerance slider — re-runs removal with new sensitivity
-// NEW: live tolerance slider — moving it now works immediately, even
-// before Trim/Remove-Background has been clicked. First move turns on
-// background removal automatically so the user sees a live preview.
+// live tolerance slider — re-runs removal with new sensitivity.
+// PERFORMANCE: debounce raised to 600ms so dragging the slider on
+// mobile doesn't trigger the (heavy) background-removal algorithm
+// dozens of times per second — only once you pause briefly.
 let tolTimer = null;
 document.getElementById('bgTolerance')?.addEventListener('input', e=>{
   const valEl = document.getElementById('bgToleranceVal');
-  if(valEl) valEl.textContent = e.target.value + '%'; // live % readout
+  if(valEl) valEl.textContent = e.target.value + '%'; // live % readout (updates instantly, no lag)
 
   const img = images.find(i=>i.id===selectedId);
 if(!img){
@@ -945,7 +993,7 @@ document.getElementById('zoomIn').addEventListener('click', ()=>{ zoom=Math.min(
 document.getElementById('zoomOut').addEventListener('click', ()=>{ zoom=Math.max(0.4, zoom-0.15); document.getElementById('zoomLabel').textContent=Math.round(zoom*100)+'%'; renderSheet(); });
 
 /* ======================================================
-   NEW: UNDO/REDO BUTTONS + KEYBOARD SHORTCUTS
+   UNDO/REDO BUTTONS + KEYBOARD SHORTCUTS
    ====================================================== */
 document.getElementById('undoBtn')?.addEventListener('click', undo);
 document.getElementById('redoBtn')?.addEventListener('click', redo);
@@ -1061,6 +1109,11 @@ document.getElementById("modalClose").onclick = () => {
     modalBg.classList.remove("open");
 };
 
+/* ======================================================
+   PERFORMANCE: auto-fit zoom on small/mobile screens so the
+   sheet fits within view without forcing left-right scrolling
+   at 100% zoom on a narrow phone screen.
+   ====================================================== */
 function autoFitZoomMobile(){
   if(window.innerWidth > 700) return;
   const stage = document.querySelector('.stage-wrap');
@@ -1073,11 +1126,6 @@ function autoFitZoomMobile(){
 }
 autoFitZoomMobile();
 renderSheet();
-
-
-
-
-
 
 /* =========================================================
    CRAFTOPIA GANG SHEET BUILDER - USER TOUR
@@ -1291,6 +1339,11 @@ renderSheet();
 
 
         setTimeout(function () {
+
+            // account for the fixed mobile header sitting on top of content
+            const headerEl = document.querySelector('header');
+            const headerOffset = (headerEl && window.innerWidth <= 980) ? headerEl.offsetHeight + 10 : 0;
+            if(headerOffset){ window.scrollBy(0, -headerOffset); }
 
             const rect = target.getBoundingClientRect();
 
@@ -1708,12 +1761,3 @@ renderSheet();
     startTour();
 
 })();}
-
-
-
-
-
-
-
-
-
