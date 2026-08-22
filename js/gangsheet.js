@@ -90,28 +90,47 @@ function computeSnap(candidate, excludeId){
 let undoStack = [];
 let redoStack = [];
 function pushHistory(){
-  undoStack.push(JSON.stringify({ images, selectedId }));
-  if(undoStack.length > 50) undoStack.shift();
+  // NEW: heavy image data (img/url/originalUrl/_cachedImg) copy nahi karte,
+  // sirf position/size/rotation etc save karte hain — bohot tez ho jata hai
+  const lightCopy = images.map(img => {
+    const { img: pixelData, _cachedImg, ...rest } = img;
+    return rest;
+  });
+  undoStack.push({ snapshot: JSON.stringify({ images: lightCopy, selectedId }), fullImages: images });
+  if(undoStack.length > 20) undoStack.shift();
   redoStack = [];
 }
-function restore(str){
-  const obj = JSON.parse(str);
-  images = obj.images;
+function restore(entry){
+  const obj = JSON.parse(entry.snapshot);
+  // heavy fields wapas asal images se merge karo (id se match karke)
+  const byId = {};
+  entry.fullImages.forEach(i => { byId[i.id] = i; });
+  images = obj.images.map(light => {
+    const heavy = byId[light.id] || {};
+    return { ...light, img: heavy.img, url: heavy.url, originalUrl: heavy.originalUrl, _cachedImg: heavy._cachedImg };
+  });
   selectedId = obj.selectedId;
   recomputeLength();
   renderSheet();
 }
 function undo(){
   if(!undoStack.length) return;
-  redoStack.push(JSON.stringify({ images, selectedId }));
+  const lightCopy = images.map(img => {
+    const { img: pixelData, _cachedImg, ...rest } = img;
+    return rest;
+  });
+  redoStack.push({ snapshot: JSON.stringify({ images: lightCopy, selectedId }), fullImages: images });
   restore(undoStack.pop());
 }
 function redo(){
   if(!redoStack.length) return;
-  undoStack.push(JSON.stringify({ images, selectedId }));
+  const lightCopy = images.map(img => {
+    const { img: pixelData, _cachedImg, ...rest } = img;
+    return rest;
+  });
+  undoStack.push({ snapshot: JSON.stringify({ images: lightCopy, selectedId }), fullImages: images });
   restore(redoStack.pop());
 }
-
 /* ======================================================
    NEW: LOW-RESOLUTION PRINT CHECK
    ====================================================== */
@@ -904,7 +923,7 @@ if(!img){
       document.getElementById('bgToggle').classList.add('on');
     }
     removeBackgroundAdvanced(img, parseInt(e.target.value,10));
-  }, 200);
+  }, 600);
 });
 
 document.getElementById('autoArrangeBtn').addEventListener('click', ()=>{
